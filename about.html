@@ -295,19 +295,22 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 @media(min-width:1181px){.navlinks{gap:20px}.navlinks .btn{padding:11px 18px}}
 .navlinks a.btn-ghost{color:var(--gold);border-color:rgba(201,168,76,.5)}
 .navlinks a.btn-ghost:hover,.navlinks a.btn-ghost.on{color:var(--w);border-color:var(--gold);background:rgba(201,168,76,.08)}
-/* BOOK A CALL */
-.book{padding-top:72px;padding-bottom:72px;border-bottom:1px solid var(--bd);scroll-margin-top:84px}
-.book .two{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}
-.book h1{margin-top:14px;font-size:clamp(38px,4.6vw,60px)}
-.h1like{font-size:clamp(42px,6.2vw,74px)}
-.book-pts{list-style:none;padding:0;margin:26px 0 0;font-size:15px;line-height:1.7;color:var(--wm)}
-.book-pts li{padding-left:22px;position:relative;margin:0 0 8px}
-.book-pts li:before{content:"";position:absolute;left:0;top:.72em;width:10px;height:1px;background:var(--gold)}
-.book-alt{margin:22px 0 0;font-size:13.5px;color:var(--wm)}
+/* BOOK A CALL + ABOUT INTRO */
+.book{padding-top:56px;padding-bottom:64px;border-bottom:1px solid var(--bd);scroll-margin-top:84px}
+.book-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"head frame" "bio frame" "cta frame";grid-template-rows:auto auto 1fr;column-gap:56px;align-items:start}
+.bk-head{grid-area:head}.bk-bio{grid-area:bio}.bk-cta{grid-area:cta}.book-frame{grid-area:frame}
+.bk-head h1{margin-top:12px;font-size:clamp(36px,3.5vw,52px)}
+.bk-bio{display:flex;gap:20px;align-items:flex-start;margin-top:26px}
+.bk-bio img{flex:none;width:120px;height:150px;object-fit:cover;object-position:68% 40%;border:1px solid rgba(201,168,76,.45);border-radius:3px}
+.bk-bio p{margin:0;font-size:14.5px;line-height:1.65;color:var(--wm)}
+.bk-cta{margin-top:26px;padding-top:22px;border-top:1px solid var(--bd)}
+.bk-cta h2{font-size:24px;margin:0;color:var(--w)}
+.bk-cta p{margin:8px 0 0;font-size:14.5px;line-height:1.6;color:var(--wm)}
+.book-alt{margin:14px 0 0;font-size:13px;color:var(--wm)}
 .book-alt a{color:var(--gold)}
 .book-frame{background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35)}
 .book-frame iframe{display:block;width:100%;height:640px;border:0}
-@media(max-width:900px){.book .two{grid-template-columns:1fr}.book{padding-top:48px}.book-frame iframe{height:820px}}
+@media(max-width:900px){.book{padding-top:40px}.book-grid{grid-template-columns:1fr;grid-template-areas:"head" "cta" "frame" "bio";grid-template-rows:auto}.bk-cta{border-top:0;padding-top:0;margin:28px 0 22px}.book-frame iframe{height:820px}.bk-bio{margin-top:28px}.bk-bio img{width:96px;height:120px}}
 </style>
 </head>
 <body class="">
@@ -318,16 +321,19 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
   <nav class="navlinks" id="navlinks" aria-label="Primary"><a href="index.html#services">Services</a><a href="estate-planning.html">Estate Planning</a><a href="attorney-on-retainer.html">Attorney on Retainer</a><a href="documents.html">Documents</a><a href="veterans.html">Veterans</a><a href="about.html" class="on">About</a><a class="btn btn-ghost" href="contact.html">Contact</a><a class="btn btn-gold btn-ico" href="about.html#book"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M8 3v4M16 3v4M3.5 10h17"></path></svg>Book a free call</a></nav>
 </div></header>
 
-<section class="section dark book" id="book" aria-labelledby="book-h">
-  <div class="wrap two">
-    <div>
-      <span class="eyebrow">Free 30-minute call</span>
-      <h1 id="book-h">Talk with Tom.<span class="echo">Pick a time that works.</span></h1>
-      <ul class="book-pts">
-        <li>Free, with no obligation</li>
-        <li>30 minutes by video, with Thomas Asbury himself</li>
-        <li>Plain answers about your plan, your options, and the flat fee</li>
-      </ul>
+<section class="section dark book" id="book" aria-labelledby="about-h">
+  <div class="wrap book-grid">
+    <div class="bk-head">
+      <span class="eyebrow">About Thomas Asbury</span>
+      <h1 id="about-h">Service first.<br>Then the law.</h1>
+    </div>
+    <div class="bk-bio">
+      <img src="assets/tom-wharton.jpg" alt="Thomas Asbury at the Wharton School, University of Pennsylvania" width="120" height="150">
+      <p>A graduate of the Ivy League Wharton School of Business at the University of Pennsylvania, a member of The Florida Bar since June 2002, a published legal scholar, an adjunct law professor, an international lecturer, and a U.S. Army veteran — now practicing the way he thinks law should be practiced: flat, transparent, and personal.</p>
+    </div>
+    <div class="bk-cta">
+      <h2>Book a free 30-minute call</h2>
+      <p>By video, with Tom himself. No obligation; plain answers about your plan, your options, and the flat fee.</p>
       <p class="book-alt">Prefer to write first? <a href="contact.html">Send a message</a>. Please don't share confidential details until we confirm we can represent you.</p>
     </div>
     <div class="book-frame">
@@ -336,16 +342,6 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
   </div>
 </section>
 
-<header class="phero dark" style="padding-bottom:0">
-  <div class="wrap two" style="align-items:end">
-    <div style="padding-bottom:70px">
-      <span class="eyebrow">About Thomas Asbury</span>
-      <h2 class="h1like">Service first.<br>Then the law.<span class="echo">Service first. Then the law.</span></h2>
-      <p class="lead">A graduate of the Ivy League Wharton School of Business at the University of Pennsylvania, a member of The Florida Bar since June 2002, a published legal scholar, an adjunct law professor, an international lecturer, and a U.S. Army veteran — now practicing the way he thinks law should be practiced: flat, transparent, and personal.</p>
-    </div>
-    <div class="slot" style="min-height:460px"><img src="assets/tom-wharton.jpg" alt="Thomas Asbury at the Wharton School" style="object-position:center top"><div class="cap">Thomas Asbury · The Wharton School, University of Pennsylvania</div></div>
-  </div>
-</header>
 
 <section class="section light">
   <div class="wrap two" style="align-items:start">
