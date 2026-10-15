@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Veterans — Asbury Law</title>
+<meta name="description" content="Free advance directives and 10% off everything for every U.S. military veteran, from Asbury Law — a Florida firm founded by a U.S. Army veteran and the son of a decorated West Point graduate.">
+<!-- Asbury Law · asbury-law.com · REV-C · 2026-09-25 · Design and content direction for B12. Brand: Deep Navy #0E1521 / Warm Cream #F2EDE4 / Antique Gold #C9A84C · Cormorant Garamond + DM Sans -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nv:#0E1521;--nv2:#151E2E;--nv3:#1C2840;
+  --cr:#F2EDE4;--cr2:#E8E2D6;--w:#F0EBE2;
+  --gold:#C9A84C;--glt:#DDB95A;--gold-ink:#9B7F2E;
+  --ink:#2A2520;--mt:#8A8278;--wm:#A29B90;--link:#1D3557;
+  --bd:rgba(255,255,255,.07);--bl:rgba(42,37,32,.1);
+  --sf:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --ss:'DM Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--ss);font-size:14px;line-height:1.75;color:var(--w);background:var(--nv);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.section{padding:92px 0}
+.dark{background:var(--nv);color:var(--w)}
+.dark2{background:var(--nv2);color:var(--w)}
+.light{background:var(--cr);color:var(--ink)}
+.light2{background:var(--cr2);color:var(--ink)}
+.eyebrow{font-family:var(--ss);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:18px;display:block}
+.light .eyebrow,.light2 .eyebrow{color:var(--gold-ink)}
+h1,h2,h3,h4{font-family:var(--sf);font-weight:500;line-height:1.08;letter-spacing:-.005em;text-wrap:balance}
+h1{font-size:clamp(42px,6.2vw,74px)}
+h2{font-size:clamp(34px,4.4vw,52px)}
+h3{font-size:26px;font-weight:600}
+.echo{display:block;opacity:.13;font-style:italic;font-weight:300;margin-top:-.06em}
+.lead{font-size:17px;line-height:1.7;max-width:640px;color:rgba(240,235,226,.78);font-weight:300}
+.light .lead,.light2 .lead{color:rgba(42,37,32,.78)}
+p+p{margin-top:14px}
+.rule{width:56px;height:1px;background:var(--gold);margin:26px 0}
+.btn{display:inline-block;font-family:var(--ss);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:15px 30px;border-radius:30px;border:1px solid transparent;cursor:pointer;transition:all .22s ease;text-align:center;line-height:1.2}
+.btn-gold{background:var(--gold);color:var(--nv);border-color:var(--gold)}
+.btn-gold:hover{background:var(--glt);border-color:var(--glt)}
+.btn-ghost{background:transparent;border-color:rgba(201,168,76,.5);color:var(--gold)}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.light .btn-ghost,.light2 .btn-ghost{border-color:rgba(42,37,32,.3);color:var(--ink)}
+.light .btn-ghost:hover,.light2 .btn-ghost:hover{border-color:var(--ink);background:rgba(42,37,32,.04)}
+.btn-navy{background:var(--nv);color:var(--w);border-color:var(--nv)}
+.btn-navy:hover{background:var(--gold);color:var(--nv);border-color:var(--gold)}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.grid{display:grid;gap:26px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:940px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.g2,.g3,.g4{grid-template-columns:1fr}.section{padding:68px 0}}
+.muted{color:var(--wm)}
+.light .muted,.light2 .muted{color:var(--mt)}
+.small{font-size:12.5px;line-height:1.7}
+.tag{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold);border:1px solid rgba(201,168,76,.45);padding:5px 12px;border-radius:20px}
+.light .tag,.light2 .tag{color:var(--gold-ink);border-color:rgba(155,127,46,.5)}
+.tag-fill{background:var(--gold);color:var(--nv);border-color:var(--gold)}
+.light .tag-fill,.light2 .tag-fill{color:var(--nv);background:var(--gold);border-color:var(--gold)}
+.notice{font-size:12.5px;line-height:1.7;color:var(--wm);max-width:820px;margin-top:36px}
+.light .notice,.light2 .notice{color:var(--mt)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(14,21,33,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{font-family:var(--sf);font-size:24px;font-weight:600;letter-spacing:.02em;color:var(--w);white-space:nowrap}
+.logo em{color:var(--gold);font-style:normal}
+.logo small{display:block;font-family:var(--ss);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--wm);font-weight:500;margin-top:-4px}
+.navlinks{display:flex;gap:26px;align-items:center}
+.navlinks a{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:rgba(240,235,226,.72);transition:color .2s;white-space:nowrap}
+.navlinks a:hover,.navlinks a.on{color:var(--gold)}
+.navlinks .btn{padding:11px 20px;font-size:10.5px}
+.navtoggle{display:none;background:transparent;border:1px solid var(--bd);color:var(--w);border-radius:8px;padding:8px 10px;font-family:var(--ss);font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+@media(max-width:1180px){
+  .navlinks{display:none;position:absolute;left:0;right:0;top:72px;background:rgba(14,21,33,.98);flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 18px;border-bottom:1px solid var(--bd)}
+  .navlinks.open{display:flex}
+  .navlinks a{padding:12px 0;width:100%;border-bottom:1px solid var(--bd);font-size:12px}
+  .navlinks .btn{margin-top:14px;width:100%;border-bottom:none}
+  .navtoggle{display:inline-block}
+}
+
+/* HERO (split) */
+.hero{display:grid;grid-template-columns:44% 56%;background:var(--nv);min-height:82vh}
+.hpic{position:relative;overflow:hidden;background:#080e18;min-height:520px}
+.hpic img{width:100%;height:100%;object-fit:cover;object-position:center top;min-height:520px;filter:brightness(.82)}
+.hfade{position:absolute;inset:0;background:linear-gradient(to right,rgba(14,21,33,0) 50%,rgba(14,21,33,1) 100%);pointer-events:none}
+.hstamp{position:absolute;bottom:1.6rem;left:1.5rem;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.hcol{display:flex;flex-direction:column;justify-content:center;padding:5.5rem 3.4rem 5rem 2.6rem}
+.hcol h1{font-size:clamp(34px,4.1vw,56px)}
+.hcol .lead{margin-top:26px}
+.hcta{margin-top:34px}
+.stats{display:flex;gap:2.4rem;flex-wrap:wrap;padding-top:1.6rem;border-top:1px solid var(--bd);margin-top:2.6rem}
+.stat b{font-family:var(--sf);font-size:30px;font-weight:600;color:var(--gold);display:block;line-height:1}
+.stat span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--wm);margin-top:.35rem;display:block}
+@media(max-width:900px){.hcol h1{font-size:clamp(32px,8.5vw,44px)}.hero{grid-template-columns:1fr;min-height:0}.hpic{min-height:340px}.hpic img{min-height:340px;object-position:center 20%}.hfade{background:linear-gradient(to bottom,rgba(14,21,33,0) 55%,rgba(14,21,33,1) 100%)}.hcol{padding:3rem 24px 3.6rem}}
+
+/* simple hero (subpages) */
+.phero{padding:110px 0 90px;position:relative;overflow:hidden}
+.phero::after{content:"";position:absolute;right:-8%;top:-20%;width:520px;height:520px;border-radius:50%;border:1px solid rgba(201,168,76,.12);pointer-events:none}
+.phero::before{content:"";position:absolute;right:4%;top:0;width:360px;height:360px;border-radius:50%;border:1px solid rgba(201,168,76,.08);pointer-events:none}
+.phero .lead{margin-top:28px}
+.phero .btn-row{margin-top:36px}
+@media(max-width:640px){.phero{padding:70px 0 60px}}
+
+/* TICKER */
+.tk{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:.75rem 0;overflow:hidden;background:var(--nv2)}
+.ti{display:flex;animation:tick 40s linear infinite;white-space:nowrap;width:max-content}
+.ti span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6a6358;padding:0 1.8rem}
+.ti .d{color:var(--gold)}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.ti{animation:none}}
+
+/* CARDS */
+.card{background:var(--cr2);border:1px solid var(--bl);border-radius:6px;padding:36px 32px;display:flex;flex-direction:column;position:relative}
+.dark .card,.dark2 .card{background:rgba(255,255,255,.025);border-color:var(--bd)}
+.card.feature{background:var(--nv2);color:var(--w);border-color:rgba(201,168,76,.4)}
+.card .flag{position:absolute;top:-13px;left:32px;background:var(--gold);color:var(--nv);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:6px 14px;border-radius:20px}
+.card .name{font-family:var(--sf);font-size:30px;font-weight:600;margin-bottom:4px}
+.card .for{font-size:13px;color:var(--mt);margin-bottom:20px;min-height:40px}
+.card.feature .for,.dark .card .for,.dark2 .card .for{color:rgba(240,235,226,.6)}
+.price{font-family:var(--sf);font-size:52px;font-weight:400;line-height:1;color:var(--ink)}
+.card.feature .price,.dark .price,.dark2 .price{color:var(--glt)}
+.price small{font-family:var(--ss);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mt);margin-left:6px}
+.dark .price small,.dark2 .price small,.card.feature .price small{color:rgba(240,235,226,.5)}
+.vet{font-size:12px;color:var(--mt);margin-top:8px}
+.card.feature .vet,.dark .vet,.dark2 .vet{color:rgba(240,235,226,.55)}
+.vet b{color:var(--gold-ink);font-weight:500}
+.card.feature .vet b,.dark .vet b,.dark2 .vet b{color:var(--gold)}
+.card ul{list-style:none;margin:26px 0 8px;display:grid;gap:11px;flex:1}
+.card li{display:flex;gap:12px;font-size:14px;line-height:1.55}
+.card li::before{content:"—";color:var(--gold);flex:none}
+.card .sub{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);font-weight:600;margin:22px 0 10px}
+.card.feature .sub,.dark .card .sub,.dark2 .card .sub{color:var(--gold)}
+.card ul.up{margin:0 0 26px;gap:8px;flex:0}
+.card ul.up li{font-size:13px;color:rgba(42,37,32,.75)}
+.card.feature ul.up li,.dark .card ul.up li,.dark2 .card ul.up li{color:rgba(240,235,226,.68)}
+.card ul.up li::before{content:"+"}
+.card ul.up li span{margin-left:auto;font-weight:500;white-space:nowrap;color:var(--ink)}
+.card.feature ul.up li span,.dark .card ul.up li span,.dark2 .card ul.up li span{color:var(--w)}
+.card .btn{width:100%}
+.card .fine{margin-top:16px;font-size:12px;text-align:center;color:var(--mt)}
+.card.feature .fine,.dark .card .fine,.dark2 .card .fine{color:rgba(240,235,226,.5)}
+
+/* TILES (services) */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--bl)}
+.dark .tiles,.dark2 .tiles{background:var(--bd)}
+.tile{background:var(--cr);padding:2.1rem 1.9rem;transition:background .25s;display:block}
+.tile:hover{background:var(--cr2)}
+.dark .tile{background:var(--nv)}.dark .tile:hover{background:var(--nv2)}
+.tile .ico{width:44px;height:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;border:1px solid rgba(201,168,76,.35)}
+.tile h3{font-size:22px;margin-bottom:.4rem}
+.tile p{font-size:13.5px;color:var(--mt);line-height:1.65}
+.tile .tag{margin-top:.9rem}
+@media(max-width:640px){.tiles{grid-template-columns:1fr}}
+
+/* STEPS */
+.step{position:relative;padding-top:24px}
+.step .n{font-family:var(--sf);font-size:60px;font-weight:300;color:var(--gold);opacity:.35;line-height:1;position:absolute;top:0;left:0}
+.step h3{margin:42px 0 10px;font-size:23px}
+.step p{color:rgba(240,235,226,.72);font-size:14px}
+.light .step p{color:var(--mt)}
+
+/* FAQ */
+details{border-bottom:1px solid var(--bl);padding:20px 0}
+.dark details,.dark2 details{border-color:var(--bd)}
+summary{cursor:pointer;list-style:none;font-family:var(--sf);font-size:22px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-weight:300;font-size:28px;flex:none}
+details[open] summary::after{content:"−"}
+details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
+.dark details p,.dark2 details p{color:rgba(240,235,226,.75)}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mt);font-weight:600;text-align:left;padding:14px 12px;border-bottom:1px solid rgba(42,37,32,.2)}
+.tbl td{padding:16px 12px;border-bottom:1px solid var(--bl);vertical-align:top}
+.dark .tbl th,.dark2 .tbl th{color:var(--wm);border-color:rgba(255,255,255,.18)}
+.dark .tbl td,.dark2 .tbl td{border-color:var(--bd)}
+.tbl td:first-child{font-family:var(--sf);font-size:19px;font-weight:600}
+.tbl td:first-child small{display:block;font-family:var(--ss);font-size:12px;font-weight:400;color:var(--mt);margin-top:2px}
+.tbl .p{white-space:nowrap;text-align:right;font-weight:500}
+.tblwrap{overflow-x:auto}
+
+/* FORMS */
+.form{background:var(--cr);color:var(--ink);border-radius:6px;padding:34px 32px;border-top:4px solid var(--gold)}
+.light .form,.light2 .form{background:var(--cr2)}
+.form h3{font-size:26px;margin-bottom:6px}
+.form p{color:var(--mt);font-size:14px;margin:0 0 18px}
+.form label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:16px 0 6px}
+.form input[type=email],.form input[type=text],.form select,.form textarea{width:100%;padding:12px 14px;border:1px solid rgba(42,37,32,.25);border-radius:4px;font-family:var(--ss);font-size:15px;background:var(--cr);color:var(--ink)}
+.light .form input[type=email],.light .form input[type=text],.light .form select,.light .form textarea{background:#F6F2EA}
+.form textarea{min-height:76px;resize:vertical}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:6px}
+@media(max-width:640px){.checks{grid-template-columns:1fr}}
+.checks label{display:flex;align-items:flex-start;gap:9px;font-size:14px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink);margin:0;cursor:pointer;line-height:1.45}
+.checks input{width:17px;height:17px;margin-top:2px;accent-color:var(--gold-ink);cursor:pointer;flex:none}
+.form .btn{margin-top:22px;width:100%}
+.form .fine{font-size:12px;color:var(--mt);margin-top:10px;text-align:center}
+.form .ok{display:none;background:rgba(201,168,76,.15);border:1px solid rgba(155,127,46,.4);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
+.form.sent .ok{display:block}
+.form.sent .btn{display:none}
+.consent{font-size:12px;color:var(--mt);margin-top:12px;line-height:1.6}
+
+/* PHOTO SLOTS */
+.slot{position:relative;background:linear-gradient(160deg,#101a2c,#1d2c48);border:1px solid var(--bd);min-height:220px;display:flex;align-items:flex-end;overflow:hidden}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slot .cap{position:relative;z-index:2;padding:14px 16px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);background:linear-gradient(to top,rgba(14,21,33,.9),rgba(14,21,33,0));width:100%}
+.slot .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,237,228,.35);line-height:1.9}
+.slot .ph b{display:block;color:rgba(201,168,76,.6);font-weight:500}
+
+/* FOOTER (v3) */
+.foot{background:var(--nv2);border-top:1px solid var(--bd);padding:3.4rem 0 0}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.6rem;margin-bottom:2.6rem}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.fg{grid-template-columns:1fr}}
+.fbn{font-family:var(--sf);font-size:1.25rem;font-weight:600;color:var(--w);margin-bottom:.5rem}
+.fbn em{color:var(--gold);font-style:normal}
+.ftg{font-size:12.5px;color:var(--wm);line-height:1.7;max-width:260px}
+.fch{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem;font-weight:600}
+.fc a{display:block;font-size:12.5px;color:var(--wm);margin-bottom:.45rem;line-height:1.5}
+.fc a:hover{color:var(--w)}
+.fresp{border-top:1px solid var(--bd);padding:1.6rem 0 0;font-size:12px;line-height:1.8;color:#7d8494}
+.fresp b{color:#c9cfda;font-weight:500}
+.fresp p+p{margin-top:8px}
+.fwm{text-align:center;padding:2.2rem 0 1rem;overflow:hidden}
+.fwt{font-family:var(--sf);font-size:clamp(2.6rem,9vw,6.4rem);font-weight:600;color:rgba(242,237,228,.05);letter-spacing:.04em;text-transform:uppercase;line-height:1;white-space:nowrap}
+.fbot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.6rem 0 1.8rem;font-size:11px;color:#5e5850}
+.fbot a{color:#7d8494}.fbot a:hover{color:var(--w)}
+
+/* misc */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media(max-width:900px){.two{grid-template-columns:1fr;gap:36px}}
+.checklist{list-style:none;display:grid;gap:13px}
+.checklist li{display:flex;gap:14px;align-items:flex-start;font-size:15px}
+.checklist li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-top:9px}
+.quote{font-family:var(--sf);font-style:italic;font-size:clamp(23px,3.3vw,34px);font-weight:400;line-height:1.5;max-width:860px;margin:0 auto;color:var(--ink);text-wrap:pretty}
+.quote-by{display:block;margin-top:26px;font-family:var(--ss);font-style:normal;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mt)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;text-align:left}
+@media(max-width:820px){.pillars{grid-template-columns:1fr}}
+.pillar{border-top:2px solid var(--gold);padding-top:24px}
+.pillar .verb{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.pillar h3{font-size:24px;margin:10px 0 10px;color:var(--w)}
+.pillar p{font-size:14.5px;color:rgba(240,235,226,.72)}
+.mission{font-family:var(--ss);font-size:clamp(17px,2.4vw,25px);font-weight:500;letter-spacing:.08em;text-transform:uppercase;max-width:920px;margin:0 auto 60px;line-height:1.55;text-align:center}
+.vals{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.2rem;margin-top:2.4rem}
+.vc{background:var(--cr2);border-radius:8px;padding:1.7rem 1.5rem;border:1px solid var(--bl)}
+.vnum{font-family:var(--sf);font-size:2rem;font-weight:600;color:rgba(155,127,46,.35);display:block;line-height:1;margin-bottom:.7rem}
+.vtit{font-size:14.5px;font-weight:500;color:var(--ink);margin-bottom:.45rem}
+.vbd{font-size:12.5px;color:var(--mt);line-height:1.65}
+.p2{border:1px solid var(--bd);border-left:2px solid var(--gold);padding:1.5rem 1.6rem;background:rgba(255,255,255,.02)}
+.p2 h3{font-size:1.2rem;color:var(--gold);margin-bottom:.5rem;font-weight:600}
+.p2 p{font-size:13px;color:rgba(240,235,226,.72);line-height:1.7}
+.p2 .when{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--wm);display:block;margin-bottom:.5rem}
+.creds{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--wm);border-left:1px solid var(--gold);padding-left:1rem;line-height:2;margin-top:1.4rem}
+.center{text-align:center}
+.docs-legal{font-size:15px;line-height:1.8;max-width:820px}
+.docs-legal h2{font-size:30px;margin:44px 0 12px}
+.docs-legal h3{font-size:22px;margin:28px 0 8px}
+.docs-legal ul,.docs-legal ol{padding-left:22px;margin:10px 0}
+.docs-legal li{margin-bottom:7px}
+.docs-legal a{color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}
+.docs-legal .box{background:var(--cr2);border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;font-size:14px}
+.docs-legal table{width:100%;border-collapse:collapse;font-size:13.5px;margin:14px 0}
+.docs-legal th,.docs-legal td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--bl);vertical-align:top}
+.docs-legal th{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mt)}
+.kw{display:inline-block;font-weight:600;font-size:12px;letter-spacing:.08em;color:var(--nv);background:var(--gold);padding:.1rem .5rem;border-radius:4px}
+.banner{background:var(--gold);color:var(--nv);text-align:center;font:600 11.5px/1.6 var(--ss);letter-spacing:.09em;text-transform:uppercase;padding:10px 18px}
+.banner a{text-decoration:underline;text-underline-offset:3px}
+.medals{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:22px}
+.medals div{border:1px solid var(--bd);padding:12px 14px;font-size:13px;color:rgba(240,235,226,.8)}
+.medals div::before{content:"★ ";color:var(--gold)}
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media(max-width:900px){.timeline{grid-template-columns:1fr}}
+.tl{border-top:1px solid rgba(201,168,76,.4);padding-top:18px}
+.tl .n{font-family:var(--sf);color:var(--gold);font-size:14px;letter-spacing:.1em}
+.tl h3{font-size:24px;margin:8px 0 4px}
+.tl .role{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--wm);margin-bottom:10px}
+.tl p{font-size:14px;color:rgba(240,235,226,.75)}
+/* BOOKING CTA */
+.navlinks a.btn-gold,.navlinks a.btn-gold:hover{color:var(--nv)}
+.btn-ico{display:inline-flex;align-items:center;justify-content:center;gap:9px}
+.btn-ico svg{flex:none}
+.btn-lg{padding:18px 34px;font-size:12px}
+.cta-micro{margin:14px 0 0;font-size:12.5px;letter-spacing:.02em;color:var(--wm)}
+.navbook{display:none}
+@media(max-width:1180px){.navbook{display:inline-flex;margin-left:auto;padding:10px 14px;font-size:10.5px;white-space:nowrap}}
+/* CONTACT NAV */
+@media(min-width:1181px){.navlinks{gap:20px}.navlinks .btn{padding:11px 18px}}
+.navlinks a.btn-ghost{color:var(--gold);border-color:rgba(201,168,76,.5)}
+.navlinks a.btn-ghost:hover,.navlinks a.btn-ghost.on{color:var(--w);border-color:var(--gold);background:rgba(201,168,76,.08)}
+</style>
+</head>
+<body class="">
+<header class="nav"><div class="wrap">
+  <a class="logo" href="index.html" aria-label="Asbury Law home">Asbury <em>Law</em></a>
+  <a class="btn btn-gold btn-ico navbook" href="about.html#book"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M8 3v4M16 3v4M3.5 10h17"></path></svg>Book a call</a>
+<button class="navtoggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+  <nav class="navlinks" id="navlinks" aria-label="Primary"><a href="index.html#services">Services</a><a href="estate-planning.html">Estate Planning</a><a href="attorney-on-retainer.html">Attorney on Retainer</a><a href="documents.html">Documents</a><a href="veterans.html" class="on">Veterans</a><a href="about.html">About</a><a class="btn btn-ghost" href="contact.html">Contact</a><a class="btn btn-gold btn-ico" href="about.html#book"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M8 3v4M16 3v4M3.5 10h17"></path></svg>Book a free call</a></nav>
+</div></header>
+
+<header class="phero dark" style="background:linear-gradient(135deg,var(--nv),var(--nv3))">
+  <div class="wrap">
+    <span class="eyebrow">Estate Planning for Veterans · Free advance directives · 10% off everything</span>
+    <h1>You took the oath.<br>The least we can do is this.<span class="echo">You took the oath.</span></h1>
+    <p class="lead">Thomas Asbury is a U.S. Army veteran. His father graduated first in military aptitude from West Point in 1963 and came home from Vietnam with a Silver Star, two Bronze Stars, and a Purple Heart. His uncle was a West Point "star man." Every U.S. military veteran — any branch, any era — receives the following at Asbury Law, no strings attached.</p>
+    <div class="btn-row"><a class="btn btn-gold" href="#claim">Claim your veteran benefit</a><a class="btn btn-ghost" href="legacy-of-service.html">The family's legacy of service</a></div>
+  </div>
+</header>
+
+<section class="section light" id="offer">
+  <div class="wrap">
+    <span class="eyebrow">The veteran benefit</span>
+    <h2>Two things, every veteran, always.<span class="echo">Two things, every veteran, always.</span></h2>
+    <div class="grid g2" style="margin-top:40px">
+      <div class="card" style="padding:36px 34px"><div class="name">Free advance directives</div><p style="color:var(--mt);margin:10px 0 18px">The three documents every adult should have, drafted and notarized at no charge — standalone, no purchase required.</p>
+        <ul style="margin-top:0"><li>Designation of Health Care Surrogate — who speaks for you medically if you can't</li><li>Living Will — your wishes on life-prolonging treatment, in writing</li><li>Durable Power of Attorney — who can manage your finances and VA matters if you're incapacitated</li><li>Drafted to Florida law, executed in the same integrated online ceremony as every plan</li></ul>
+        <a class="btn btn-navy" href="#claim">Claim your free directives</a></div>
+      <div class="card" style="padding:36px 34px"><div class="name">10% off everything</div><p style="color:var(--mt);margin:10px 0 18px">Applied at checkout with proof of service, on every product the firm offers, now and as new ones launch.</p>
+        <ul style="margin-top:0"><li>Every estate plan — Foundations $445 · Cornerstone $1,615 · Pinnacle $2,695</li><li>Every Attorney on Retainer membership — from $26.10 a month</li><li>Every on-demand document and bundle</li><li>Every piece of content in the Legacy Library</li></ul>
+        <a class="btn btn-navy" href="estate-planning.html#plans">See the estate plans</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark2">
+  <div class="wrap two">
+    <div>
+      <span class="eyebrow">Planning built around service</span>
+      <h2>Estate planning that accounts for how veterans actually live.<span class="echo">Estate planning for veterans.</span></h2>
+      <div class="rule"></div>
+      <p class="lead">A veteran's plan has moving parts a civilian's doesn't. We build for them.</p>
+    </div>
+    <ul class="checklist" style="color:rgba(240,235,226,.85)">
+      <li><strong style="font-weight:500">VA benefits and survivors.</strong> Coordinating your plan with disability compensation, pension, DIC for survivors, and Aid &amp; Attendance eligibility so a well-meant gift doesn't cost a benefit.</li>
+      <li><strong style="font-weight:500">Fiduciary and POA design.</strong> A power of attorney drafted so your agent can actually deal with the VA, DFAS, and TRICARE.</li>
+      <li><strong style="font-weight:500">Burial and honors.</strong> Documenting your wishes for a national cemetery interment and military honors so your family isn't guessing.</li>
+      <li><strong style="font-weight:500">Service-connected disability planning.</strong> Trust provisions that protect a disabled veteran's or dependent's eligibility for needs-based benefits.</li>
+      <li><strong style="font-weight:500">Deployment-ready documents.</strong> Limited-term powers of attorney with an expiration date for active-duty families.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section light" id="legacy">
+  <div class="wrap">
+    <span class="eyebrow">Why this matters here</span>
+    <h2>Three generations of service.<span class="echo">Three generations of service.</span></h2>
+    <div class="grid g3" style="margin-top:36px">
+      <div><div class="slot" style="min-height:260px"><img src="assets/lloyd-cadet.jpg" alt="Lloyd Thomas Asbury, West Point cadet" loading="lazy" style="object-position:center 28%"><div class="cap">Lloyd Thomas Asbury · West Point '63</div></div><h3 style="margin:18px 0 6px">Lloyd Thomas Asbury</h3><p class="small" style="color:var(--mt)">West Point Class of 1963, the number-one military graduate of his class. Two tours in Vietnam and service in Cambodia. Silver Star, two Bronze Stars, Purple Heart. Airborne, Army Ranger, Ranger School cadre, West Point faculty. Later a practicing attorney — the first lawyer in the family.</p></div>
+      <div><div class="slot" style="min-height:260px"><div class="ph"><b>Photo</b>Larry Asbury<br>West Point graduate</div><div class="cap">Larry Asbury · West Point "star man"</div></div><h3 style="margin:18px 0 6px">Larry Asbury</h3><p class="small" style="color:var(--mt)">Tom's uncle, and a West Point graduate as well — a "star man," the Academy's distinction for cadets recognized among the very top of their class academically.</p></div>
+      <div><div class="slot" style="min-height:260px"><img src="assets/tom-wharton.jpg" alt="Thomas Asbury" loading="lazy" style="object-position:center 22%"><div class="cap">Thomas Asbury · U.S. Army veteran</div></div><h3 style="margin:18px 0 6px">Thomas Asbury</h3><p class="small" style="color:var(--mt)">Born at West Point while his father was on the faculty. Received a congressional appointment to the Academy; chose the Wharton School of the University of Pennsylvania, then served in the U.S. Army (1990–91) at the U.S. Military Academy Preparatory School. A member of The Florida Bar since 2002.</p></div>
+    </div>
+    <div class="btn-row" style="margin-top:34px"><a class="btn btn-ghost" href="legacy-of-service.html">Read A Legacy of Service →</a></div>
+  </div>
+</section>
+
+<section class="section dark" id="claim">
+  <div class="wrap two" style="align-items:start">
+    <div>
+      <span class="eyebrow">Claim your benefit</span>
+      <h2>Verify once. It applies everywhere.<span class="echo">Verify once. It applies everywhere.</span></h2>
+      <div class="rule"></div>
+      <p class="lead">Upload a DD-214, VA identification card, or military ID at checkout, or send it to us here and we'll attach the veteran discount to your account before you buy anything. Your free advance directives start with a short intake and finish with the same online signing ceremony as every plan.</p>
+      <p class="small" style="color:rgba(240,235,226,.55);margin-top:18px">Proof of service is handled as confidential client information and is never shared. Verification may be performed through a secure identity-verification provider.</p>
+    </div>
+    <form class="form" id="vet-form" data-endpoint="" novalidate>
+      <h3>Start your free advance directives</h3>
+      <p>Leave your email and we'll send the veteran intake link and attach your 10% discount.</p>
+      <label for="vet-email">Your email</label><input type="email" id="vet-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+      <label for="vet-name">Your name</label><input type="text" id="vet-name" name="name" placeholder="First and last name" autocomplete="name">
+      <label>Branch of service</label>
+      <div class="checks"><label><input type="checkbox" name="branch" value="Army"> Army</label><label><input type="checkbox" name="branch" value="Navy"> Navy</label><label><input type="checkbox" name="branch" value="Marine Corps"> Marine Corps</label><label><input type="checkbox" name="branch" value="Air Force"> Air Force</label><label><input type="checkbox" name="branch" value="Space Force"> Space Force</label><label><input type="checkbox" name="branch" value="Coast Guard"> Coast Guard</label><label><input type="checkbox" name="branch" value="National Guard / Reserve"> National Guard / Reserve</label></div>
+      <label>I'd like</label>
+      <div class="checks"><label><input type="checkbox" name="wants" value="Free advance directives" checked> My free advance directives</label><label><input type="checkbox" name="wants" value="Estate plan"> Information on a full estate plan</label><label><input type="checkbox" name="wants" value="Membership"> Attorney on Retainer membership</label><label><input type="checkbox" name="wants" value="Newsletter"> The veterans' newsletter</label></div>
+      <input type="hidden" name="context" value="veterans-page">
+      <button class="btn btn-gold" type="submit">Send my veteran intake link</button>
+      <p class="consent">By submitting you agree to receive email from Asbury Law about the items you selected. Consent is not a condition of any purchase. Submitting this form does not create an attorney-client relationship; one is formed when you sign the engagement agreement for your directives.</p>
+      <div class="ok" role="status">Thank you for your service. Your intake link is on its way.</div>
+    </form>
+  </div>
+</section>
+
+<footer class="foot"><div class="wrap">
+  <div class="fg">
+    <div><div class="fbn">Asbury <em>Law</em></div><p class="ftg">Modern Counsel. Lasting Legacy. Flat-fee estate planning, attorney-on-retainer memberships, and on-demand Florida legal documents — delivered on your schedule.</p></div>
+    <div class="fc"><div class="fch">Services</div><a href="estate-planning.html">Estate Planning</a><a href="attorney-on-retainer.html">Attorney on Retainer</a><a href="documents.html">On-Demand Documents</a><a href="veterans.html">Estate Planning for Veterans</a><a href="whats-next.html#neurodiversity">Neurodiversity Law</a></div>
+    <div class="fc"><div class="fch">Firm</div><a href="about.html">About Thomas Asbury</a><a href="legacy-of-service.html">A Legacy of Service</a><a href="legacy-vault.html">Private by Design</a><a href="whats-next.html">What's Next</a><a href="contact.html">Contact</a></div>
+    <div class="fc"><div class="fch">Legal</div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="sms-terms.html">SMS Terms</a><a href="accessibility.html">Accessibility</a><a href="legacy-portal-agreement.html">Legacy Portal Agreement</a></div>
+  </div>
+  <div class="fresp">
+    <p><b>Responsible attorney:</b> Thomas Asbury, Attorney at Law · Florida Bar No. 567523 · Asbury Law · 245 Riverside Ave, Suite 100, Jacksonville (Duval County), FL 32202 · <span style="user-select:all">Tom@Asbury-Law.com</span></p>
+    <p>Attorney advertising. This website is general information only, is not legal advice, and viewing it does not create an attorney-client relationship. An attorney-client relationship is formed only by a signed written engagement agreement. Flat fees are stated before any work begins; the nature of each fee is disclosed in writing in the engagement agreement. Past results do not guarantee a similar outcome. Asbury Law serves clients throughout Florida; services are limited to Florida law.</p>
+    <p>Legacy Portal is a separate company affiliated with Asbury Law through common ownership. It is not a law firm, provides no legal services, and using it is optional and never required to engage Asbury Law.</p>
+  </div>
+  <div class="fwm"><div class="fwt" aria-hidden="true">Asbury Law</div></div>
+  <div class="fbot"><span>© <span data-year>2026</span> Asbury Law. All rights reserved. · Licensed by The Florida Bar</span><span><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="sms-terms.html">SMS Terms</a> · <a href="accessibility.html">Accessibility</a> · <a href="contact.html">Contact</a></span></div>
+</div></footer>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var y=document.querySelectorAll('[data-year]');for(var i=0;i<y.length;i++)y[i].textContent=new Date().getFullYear();
+  var t=document.querySelector('.navtoggle'),n=document.querySelector('.navlinks');
+  if(t&&n){t.addEventListener('click',function(){n.classList.toggle('open');t.setAttribute('aria-expanded',n.classList.contains('open'))});}
+  // forms: no backend yet — B12/Zoho Forms endpoint goes in data-endpoint
+  var forms=document.querySelectorAll('form.form');
+  for(var f=0;f<forms.length;f++){forms[f].addEventListener('submit',function(e){
+    e.preventDefault();var form=e.target;var email=form.querySelector('input[type=email]');
+    if(email&&(!email.value||email.value.indexOf('@')<0)){email.focus();email.style.borderColor='#A31621';return;}
+    var ep=form.getAttribute('data-endpoint');
+    var data={};var els=form.querySelectorAll('input,select,textarea');
+    for(var k=0;k<els.length;k++){var el=els[k];if(!el.name)continue;if(el.type==='checkbox'){if(el.checked){data[el.name]=(data[el.name]?data[el.name]+'; ':'')+(el.value||'yes');}}else{data[el.name]=el.value;}}
+    data.page=location.pathname;data.ts=new Date().toISOString();
+    if(ep){try{fetch(ep,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).catch(function(){});}catch(x){}}
+    form.classList.add('sent');
+  });}
+  // per-document "notify me" buttons pre-check the matching box and scroll to the form
+  var nb=document.querySelectorAll('[data-notify]');
+  for(var j=0;j<nb.length;j++){nb[j].addEventListener('click',function(e){
+    e.preventDefault();var key=e.currentTarget.getAttribute('data-notify');
+    var box=document.querySelector('input[name="docs"][value="'+key+'"]');if(box){box.checked=true;}
+    var target=document.getElementById('notify');if(target){target.scrollIntoView({behavior:'smooth'});}
+    var em=document.getElementById('nf-email');if(em){setTimeout(function(){em.focus()},600);}
+  });}
+});
+</script>
+</body>
+</html>
