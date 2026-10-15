@@ -300,9 +300,9 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 .book-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"head frame" "bio frame" "cta frame";grid-template-rows:auto auto 1fr;column-gap:56px;align-items:start}
 .bk-head{grid-area:head}.bk-bio{grid-area:bio}.bk-cta{grid-area:cta}.book-frame{grid-area:frame}
 .bk-head h1{margin-top:12px;font-size:clamp(36px,3.5vw,52px)}
-.bk-bio{display:flex;gap:20px;align-items:flex-start;margin-top:26px}
-.bk-bio img{flex:none;width:120px;height:150px;object-fit:cover;object-position:68% 40%;border:1px solid rgba(201,168,76,.45);border-radius:3px}
-.bk-bio p{margin:0;font-size:14.5px;line-height:1.65;color:var(--wm)}
+.bk-bio{margin-top:24px}
+.bk-bio img{display:block;width:280px;max-width:100%;height:350px;object-fit:cover;object-position:64% 30%;border:1px solid rgba(201,168,76,.45);border-radius:3px}
+.bk-bio p{margin:18px 0 0;font-size:14.5px;line-height:1.65;color:var(--wm)}
 .bk-cta{margin-top:26px;padding-top:22px;border-top:1px solid var(--bd)}
 .bk-cta h2{font-size:24px;margin:0;color:var(--w)}
 .bk-cta p{margin:8px 0 0;font-size:14.5px;line-height:1.6;color:var(--wm)}
@@ -310,7 +310,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 .book-alt a{color:var(--gold)}
 .book-frame{background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35)}
 .book-frame iframe{display:block;width:100%;height:640px;border:0}
-@media(max-width:900px){.book{padding-top:40px}.book-grid{grid-template-columns:1fr;grid-template-areas:"head" "cta" "frame" "bio";grid-template-rows:auto}.bk-cta{border-top:0;padding-top:0;margin:28px 0 22px}.book-frame iframe{height:820px}.bk-bio{margin-top:28px}.bk-bio img{width:96px;height:120px}}
+@media(max-width:900px){.book{padding-top:40px}.book-grid{grid-template-columns:1fr;grid-template-areas:"head" "cta" "frame" "bio";grid-template-rows:auto}.bk-cta{border-top:0;padding-top:0;margin:28px 0 22px}.book-frame iframe{height:820px}.bk-bio{margin-top:28px}}
 </style>
 </head>
 <body class="">
@@ -328,7 +328,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
       <h1 id="about-h">Service first.<br>Then the law.</h1>
     </div>
     <div class="bk-bio">
-      <img src="assets/tom-wharton.jpg" alt="Thomas Asbury at the Wharton School, University of Pennsylvania" width="120" height="150">
+      <img src="assets/tom-wharton.jpg" alt="Thomas Asbury at the Wharton School, University of Pennsylvania" width="280" height="350">
       <p>A graduate of the Ivy League Wharton School of Business at the University of Pennsylvania, a member of The Florida Bar since June 2002, a published legal scholar, an adjunct law professor, an international lecturer, and a U.S. Army veteran — now practicing the way he thinks law should be practiced: flat, transparent, and personal.</p>
     </div>
     <div class="bk-cta">
