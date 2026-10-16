@@ -206,6 +206,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 .form .ok{display:none;background:rgba(201,168,76,.15);border:1px solid rgba(155,127,46,.4);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
 .form.sent .ok{display:block}
 .form.sent .btn{display:none}
+.cf-err{background:rgba(163,22,33,.08);border:1px solid rgba(163,22,33,.35);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
 .consent{font-size:12px;color:var(--mt);margin-top:12px;line-height:1.6}
 
 /* PHOTO SLOTS */
@@ -488,22 +489,22 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 
 <section class="section dark2" id="next">
   <div class="wrap">
-    <span class="eyebrow">Coming soon · Phase 2 · First quarter of 2027</span>
+    <span class="eyebrow">Coming soon</span>
     <h2>What we're building for you now.<span class="echo">What we're building for you now.</span></h2>
     <p class="lead" style="margin:18px 0 34px">The catalog above is day one, not the destination. Here's what's rolling out next. Sign up below and we'll tell you the moment a category you care about goes live.</p>
     <div class="grid g2">
-      <div class="p2" id="neurodiversity"><span class="when">Neurodiversity Law · Q1 2027</span><h3>Education Law — Autism &amp; 504 Advocacy</h3><p>For parents of children on the spectrum and other neurodivergent kids: 504 meeting request and accommodations letters; IEP and evaluation request letters that start the legal clocks; FERPA school-records requests; least-restrictive-environment advocacy letters; parent checklists for what to ask and what the law entitles you to receive; and therapy insurance-denial appeal letters. Plus special needs trusts and spendthrift trusts so your child's care continues uninterrupted.</p></div>
-      <div class="p2"><span class="when">Q1 2027</span><h3>Demand Letters, Three Ways</h3><p>Document only; on firm letterhead over the attorney's signature; or with follow-up consultation time added in the increments you choose.</p></div>
-      <div class="p2"><span class="when">Q1 2027</span><h3>Pet Trusts &amp; Gun Trusts</h3><p>A Florida pet trust so your animals are cared for by the person and funds you choose — and a Florida gun trust for lawful, orderly ownership, transfer, and succession of firearms, including NFA items.</p></div>
-      <div class="p2"><span class="when">Q1 2027</span><h3>Asset Protection — Standalone Documents</h3><p>A growing shelf of individually purchasable asset-protection documents — entity structuring, homestead tools, and protective provisions — for people who want to fortify what they've built, one document at a time.</p></div>
+      <div class="p2" id="neurodiversity"><span class="when">Neurodiversity Law</span><h3>Education Law — Autism &amp; 504 Advocacy</h3><p>For parents of children on the spectrum and other neurodivergent kids: 504 meeting request and accommodations letters; IEP and evaluation request letters that start the legal clocks; FERPA school-records requests; least-restrictive-environment advocacy letters; parent checklists for what to ask and what the law entitles you to receive; and therapy insurance-denial appeal letters. Plus special needs trusts and spendthrift trusts so your child's care continues uninterrupted.</p></div>
+      <div class="p2"><h3>Demand Letters, Three Ways</h3><p>Document only; on firm letterhead over the attorney's signature; or with follow-up consultation time added in the increments you choose.</p></div>
+      <div class="p2"><h3>Pet Trusts &amp; Gun Trusts</h3><p>A Florida pet trust so your animals are cared for by the person and funds you choose — and a Florida gun trust for lawful, orderly ownership, transfer, and succession of firearms, including NFA items.</p></div>
+      <div class="p2"><h3>Asset Protection — Standalone Documents</h3><p>A growing shelf of individually purchasable asset-protection documents — entity structuring, homestead tools, and protective provisions — for people who want to fortify what they've built, one document at a time.</p></div>
     </div>
-    <p class="small muted" style="margin-top:20px">The full roadmap, including prepaid consultations and the Legacy Library, is on <a href="whats-next.html" style="color:var(--gold)">What's Next →</a></p>
+    <p class="small muted" style="margin-top:20px">Discover <a href="whats-next.html" style="color:var(--gold)">What's Next →</a></p>
   </div>
 </section>
 
 <section class="section dark">
   <div class="wrap" style="max-width:820px">
-    <form class="form" id="notify" data-endpoint="" novalidate>
+    <form class="form" id="notify" data-live="documents" action="/api/document-request" method="post" novalidate>
   <h3>Get notified. Get heard.</h3><p>Select every document you're waiting for. We'll email you the moment each one goes live, and the most-requested documents move to the front of the build queue.</p>
   <label for="notify-email">Your email</label>
   <input type="email" id="notify-email" name="email" placeholder="you@example.com" autocomplete="email" required>
@@ -514,10 +515,11 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
   <label>Which documents are you waiting for? Select as many as you like.</label><div class="checks"><label><input type="checkbox" name="docs" value="lady-bird"> Lady Bird Deed</label><label><input type="checkbox" name="docs" value="will"> Last Will & Testament</label><label><input type="checkbox" name="docs" value="dpoa"> Durable Power of Attorney</label><label><input type="checkbox" name="docs" value="hcs"> Designation of Health Care Surrogate</label><label><input type="checkbox" name="docs" value="living-will"> Living Will</label><label><input type="checkbox" name="docs" value="quitclaim"> Quitclaim Deed</label><label><input type="checkbox" name="docs" value="lease"> Residential Lease</label><label><input type="checkbox" name="docs" value="llc-oa"> LLC Operating Agreement</label><label><input type="checkbox" name="docs" value="nda"> Non-Disclosure Agreement</label><label><input type="checkbox" name="docs" value="contractor"> Independent Contractor Agreement</label><label><input type="checkbox" name="docs" value="services"> Services Agreement</label><label><input type="checkbox" name="docs" value="offer"> Employment Offer Letter</label><label><input type="checkbox" name="docs" value="noncompete"> Non-Compete & Non-Solicit Agreement</label><label><input type="checkbox" name="docs" value="demand"> Attorney Demand Letter</label><label><input type="checkbox" name="docs" value="bundle:Estate Planning Essentials"> Estate Planning Essentials (bundle)</label><label><input type="checkbox" name="docs" value="bundle:Couples Estate Plan"> Couples Estate Plan (bundle)</label><label><input type="checkbox" name="docs" value="bundle:Living Trust Bundle"> Living Trust Bundle (bundle)</label><label><input type="checkbox" name="docs" value="bundle:Landlord Starter Kit"> Landlord Starter Kit (bundle)</label><label><input type="checkbox" name="docs" value="bundle:Renter Starter Kit"> Renter Starter Kit (bundle)</label><label><input type="checkbox" name="docs" value="bundle:LLC Launch"> LLC Launch (bundle)</label><label><input type="checkbox" name="docs" value="special-needs-trust"> Special Needs Trust</label><label><input type="checkbox" name="docs" value="iep-504"> IEP / 504 request letters</label><label><input type="checkbox" name="docs" value="pet-trust"> Pet Trust</label><label><input type="checkbox" name="docs" value="gun-trust"> Gun Trust</label><label><input type="checkbox" name="docs" value="homestead"> Declaration of Homestead</label></div>
   <label for="notify-msg">Anything specific you'd like us to build? (optional)</label>
   <textarea id="notify-msg" name="message" placeholder="Tell us the document or problem you wish we covered…"></textarea>
-  <input type="hidden" name="context" value="documents-page">
+  <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label for="notify-company">Company</label><input id="notify-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
   <button class="btn btn-gold" type="submit">Sign me up</button>
   <p class="consent">By submitting you agree to receive email from Asbury Law about the items you selected. Consent is not a condition of any purchase. See our <a href="privacy.html" style="text-decoration:underline">Privacy Policy</a>. Submitting this form does not create an attorney-client relationship.</p>
   <div class="ok" role="status">Thank you — you're on the list. We'll email you the moment your selections go live.</div>
+  <div class="cf-err" role="alert" hidden>Your request could not be sent. Please try again in a few minutes, or <a href="about.html#book">book a free call</a> instead.</div>
 </form>
   </div>
 </section>
@@ -552,7 +554,7 @@ document.addEventListener('DOMContentLoaded',function(){
   var t=document.querySelector('.navtoggle'),n=document.querySelector('.navlinks');
   if(t&&n){t.addEventListener('click',function(){n.classList.toggle('open');t.setAttribute('aria-expanded',n.classList.contains('open'))});}
   // forms: no backend yet — B12/Zoho Forms endpoint goes in data-endpoint
-  var forms=document.querySelectorAll('form.form');
+  var forms=document.querySelectorAll('form.form:not([data-live])');
   for(var f=0;f<forms.length;f++){forms[f].addEventListener('submit',function(e){
     e.preventDefault();var form=e.target;var email=form.querySelector('input[type=email]');
     if(email&&(!email.value||email.value.indexOf('@')<0)){email.focus();email.style.borderColor='#A31621';return;}
@@ -572,6 +574,27 @@ document.addEventListener('DOMContentLoaded',function(){
     var em=document.getElementById('nf-email');if(em){setTimeout(function(){em.focus()},600);}
   });}
 });
+</script>
+<script>
+(function(){
+  var form=document.getElementById('notify');if(!form||!form.hasAttribute('data-live'))return;
+  var btn=form.querySelector('button[type=submit]'),err=form.querySelector('.cf-err'),label=btn.textContent;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();err.hidden=true;
+    var email=form.querySelector('input[type=email]');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){email.setAttribute('aria-invalid','true');email.style.borderColor='#A31621';email.focus();return;}
+    email.setAttribute('aria-invalid','false');email.style.borderColor='';
+    var g=function(n){var el=form.querySelector('[name='+n+']');return el?el.value:'';};
+    var data={email:email.value.trim(),name:g('name'),message:g('message'),company:g('company'),interests:[],docs:[],source_page:location.pathname};
+    var boxes=form.querySelectorAll('input[type=checkbox]:checked');
+    for(var i=0;i<boxes.length;i++){if(data[boxes[i].name])data[boxes[i].name].push(boxes[i].value);}
+    btn.disabled=true;btn.textContent='Sending…';
+    fetch('/api/document-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(j){if(!j||!j.ok)throw new Error('bad');form.classList.add('sent');})
+      .catch(function(){err.hidden=false;btn.disabled=false;btn.textContent=label;});
+  });
+})();
 </script>
 </body>
 </html>
