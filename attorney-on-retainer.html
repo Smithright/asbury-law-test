@@ -206,6 +206,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 .form .ok{display:none;background:rgba(201,168,76,.15);border:1px solid rgba(155,127,46,.4);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
 .form.sent .ok{display:block}
 .form.sent .btn{display:none}
+.cf-err{background:rgba(163,22,33,.08);border:1px solid rgba(163,22,33,.35);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
 .consent{font-size:12px;color:var(--mt);margin-top:12px;line-height:1.6}
 
 /* PHOTO SLOTS */
@@ -307,15 +308,9 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 
 <header class="phero dark">
   <div class="wrap">
-    <span class="eyebrow">Attorney on Retainer · Monthly Membership · Available Now</span>
-    <h1>An attorney in your corner,<br>for less than a phone bill.<span class="echo">An attorney in your corner.</span></h1>
-    <p class="lead">A $10,000 retainer or a $750-an-hour rate has kept most families and small businesses from ever having a lawyer they could simply call. Membership changes the dynamic — and the scope — of the attorney-client relationship. Join online in minutes. No intake call, no hourly clock, cancel anytime.</p>
+    <h1>An attorney in your corner,<br>for less than a phone bill.</h1>
+    <p class="lead">A $10,000 retainer or a $750-an-hour rate has kept most families and small businesses from ever having a lawyer they could simply call. Membership changes the dynamic — and the scope — of the attorney-client relationship.</p>
     <div class="btn-row"><a class="btn btn-gold" href="#tiers">Compare the three memberships</a><a class="btn btn-ghost" href="#faq">Questions</a></div>
-    <div class="stats">
-      <div class="stat"><b>$29</b><span>A month, to start</span></div>
-      <div class="stat"><b>0</b><span>Billable hours</span></div>
-      <div class="stat"><b>Monthly</b><span>Cancel anytime</span></div>
-    </div>
   </div>
 </header>
 
@@ -323,7 +318,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
   <div class="wrap two">
     <div>
       <span class="eyebrow">Why membership</span>
-      <h2>Proactive, not reactive.<span class="echo">Proactive, not reactive.</span></h2>
+      <h2>Proactive, not reactive.</h2>
       <div class="rule"></div>
       <p class="lead">Traditional legal services are reactive: you call a lawyer when the sky is falling, and it costs a fortune. Membership is the opposite. Every level delivers something every month whether or not you call — a briefing on what changed in Florida law, a live town hall, a standing relationship with an attorney who already knows you.</p>
     </div>
@@ -339,7 +334,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 <section class="section dark2" id="tiers">
   <div class="wrap">
     <span class="eyebrow">Three levels of membership</span>
-    <h2>Choose your level of counsel.<span class="echo">Choose your level of counsel.</span></h2>
+    <h2>Choose your level of counsel.</h2>
     <div class="rule"></div>
     <div class="grid g3" style="margin-top:44px">
       <div class="card">
@@ -356,8 +351,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
           <li>Legacy Portal document vault included</li>
           <li>Priority scheduling and member pricing on any flat-fee matter</li>
         </ul>
-        <a href="#join" class="btn btn-ghost">Join Legacy Circle</a>
-        <div class="fine">Month-to-month · cancel anytime from your portal</div>
+        <a href="#join" class="btn btn-ghost" data-tier="Legacy Circle $29">Learn more</a>
       </div>
       <div class="card feature">
         <div class="flag">Most room to work</div>
@@ -373,8 +367,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
           <li>Any on-demand document at the Attorney-Reviewed tier for the Basic price</li>
           <li>20% off any flat-fee matter beyond the membership's scope</li>
         </ul>
-        <a href="#join" class="btn btn-gold">Join Counsel Circle</a>
-        <div class="fine">Month-to-month · cancel anytime from your portal</div>
+        <a href="#join" class="btn btn-gold" data-tier="Counsel Circle $149">Learn more</a>
       </div>
       <div class="card">
         <div class="name">Fortress Circle</div>
@@ -389,32 +382,20 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
           <li>Unlimited on-demand documents at the Attorney-Reviewed tier</li>
           <li>30% off any flat-fee matter beyond the membership's scope</li>
         </ul>
-        <a href="#join" class="btn btn-ghost">Join Fortress Circle</a>
-        <div class="fine">Month-to-month · cancel anytime from your portal</div>
+        <a href="#join" class="btn btn-ghost" data-tier="Fortress Circle $349">Learn more</a>
       </div>
     </div>
-    <p class="notice">Every membership is a limited-scope engagement under Rule 4-1.2(c). Excluded from every level: litigation and disputes, court appearances, matters outside Florida law, contingency matters, and any work beyond the level's bundle (offered under a separate flat-fee engagement at the member discount). Included services do not roll over; the monthly fee compensates standing availability and the monthly deliverables whether or not they are used, as disclosed in writing. Costs (filing and recording fees, third-party vendors) are not included. Town halls are clients-only and are not a substitute for individual advice.</p>
   </div>
 </section>
 
 <section class="section light" id="join">
-  <div class="wrap two" style="align-items:start">
+  <div class="wrap" style="max-width:640px;margin:0 auto">
     <div>
-      <span class="eyebrow">How to join</span>
-      <h2>Online, in minutes.<span class="echo">Online, in minutes.</span></h2>
-      <div class="rule"></div>
-      <div class="grid" style="gap:0">
-        <div class="step" style="padding-top:0"><div class="n" style="position:static;font-size:15px;opacity:1;letter-spacing:.1em;color:var(--gold-ink)">01</div><h3 style="margin:8px 0 8px;font-size:22px">Select your level</h3><p style="color:var(--mt)">Legacy, Counsel, or Fortress. Switch levels any time; the change takes effect at your next billing date.</p></div>
-        <div class="step" style="padding-top:22px;border-top:1px solid var(--bl);margin-top:22px"><div class="n" style="position:static;font-size:15px;opacity:1;letter-spacing:.1em;color:var(--gold-ink)">02</div><h3 style="margin:8px 0 8px;font-size:22px">Conflict check, then your engagement agreement</h3><p style="color:var(--mt)">Every member is a client. We run a conflict check before your payment is captured, then you sign a plain-English membership engagement agreement that states the scope, the exclusions, and the nature of the fee.</p></div>
-        <div class="step" style="padding-top:22px;border-top:1px solid var(--bl);margin-top:22px"><div class="n" style="position:static;font-size:15px;opacity:1;letter-spacing:.1em;color:var(--gold-ink)">03</div><h3 style="margin:8px 0 8px;font-size:22px">Your portal opens</h3><p style="color:var(--mt)">Your first Legal Pulse, the next town hall date, your document vault, and the voting board for what we build next.</p></div>
-      </div>
-    </div>
-    <div>
-      <div class="form" data-endpoint="" style="border-top-color:var(--gold-ink)">
-        <h3>Reserve your membership</h3>
-        <p>Checkout opens with the site launch. Leave your email and we'll send your enrollment link the day it goes live — and your first Legal Pulse with it.</p>
-        <form class="form" id="join-form" data-endpoint="" novalidate style="padding:0;border:none;background:transparent">
+      <div class="form" style="border-top-color:var(--gold-ink)">
+        <h3>Request membership</h3>
+        <form class="form" id="join-form" data-live="membership" action="/api/membership-request" method="post" novalidate style="padding:0;border:none;background:transparent">
           <label for="join-email">Your email</label><input type="email" id="join-email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          <label for="join-phone">Phone</label><input type="tel" id="join-phone" name="phone" placeholder="(904) 555-0100" autocomplete="tel">
           <label>I'm interested in</label>
           <div class="checks">
             <label><input type="checkbox" name="tier" value="Legacy Circle $29" checked> Legacy Circle · $29/mo</label>
@@ -422,9 +403,11 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
             <label><input type="checkbox" name="tier" value="Fortress Circle $349"> Fortress Circle · $349/mo</label>
             <label><input type="checkbox" name="veteran" value="yes"> I'm a U.S. military veteran (10% off)</label>
           </div>
-          <button class="btn btn-gold" type="submit">Send my enrollment link</button>
+          <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label for="join-company">Company</label><input id="join-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-gold" type="submit">Request membership</button>
           <p class="consent">By submitting you agree to receive email from Asbury Law about membership. Consent is not a condition of purchase. Submitting this form does not create an attorney-client relationship.</p>
-          <div class="ok" role="status">Thank you — your enrollment link is on its way the day membership opens.</div>
+          <div class="ok" role="status">Thank you — your request is in. We'll be in touch shortly.</div>
+          <div class="cf-err" role="alert" hidden>Your request could not be sent. Please try again in a few minutes, or <a href="about.html#book">book a free call</a> instead.</div>
         </form>
       </div>
     </div>
@@ -434,22 +417,19 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 <section class="section dark" id="faq">
   <div class="wrap">
     <span class="eyebrow">Questions</span>
-    <h2>Before you join.<span class="echo">Before you join.</span></h2>
+    <h2>Before you join.</h2>
     <div class="rule"></div>
-    <details><summary>Is the monthly fee refundable?</summary><p>The monthly fee is a nonrefundable retainer and flat fee, earned by the firm when received, as disclosed in writing in your membership engagement agreement under Rule 4-1.5(e). It pays for standing availability plus the month's deliverables. It is not an advance fee or a deposit against hourly work. All fees remain subject to the prohibition against excessive fees, and you may be entitled to a refund if the firm fails to perform.</p></details>
-    <details><summary>How do I cancel?</summary><p>Any time, from your portal, with no phone call required. Cancellation takes effect at the end of the current monthly period; no further charges occur. Your membership renews automatically each month until you cancel — you'll see that stated plainly at checkout, and we send a reminder before any price change.</p></details>
     <details><summary>Am I a client?</summary><p>Yes. Every member is a client of Asbury Law for the scope stated in the membership engagement agreement. That is why we run a conflict check before your first payment is captured. Matters outside the scope are offered under a separate flat-fee engagement at your member discount.</p></details>
     <details><summary>What isn't covered?</summary><p>Litigation and disputes, court appearances, anything outside Florida law, contingency matters, and any work beyond your level's bundle. Asbury Law does not accept contingency-fee, personal injury, or criminal matters.</p></details>
     <details><summary>What happens at a town hall?</summary><p>A live, clients-only video session each month. Thomas Asbury walks through what's changing, what to anticipate in the months ahead, and takes questions. Town halls are general in nature and are not a substitute for individual advice on your specific situation; anything you raise that needs individual attention is handled in your own consultation.</p></details>
-    <details><summary>Do unused consultations roll over?</summary><p>No. Included services are monthly and do not accumulate. The fee compensates availability and the standing deliverables — the Legal Pulse, the town hall, the vault — whether or not you use everything each month.</p></details>
   </div>
 </section>
 
 <section class="section light center">
   <div class="wrap">
     <span class="eyebrow">Ready</span>
-    <h2>Be one of those people who has an attorney on retainer.<span class="echo">Be one of those people.</span></h2>
-    <div class="btn-row" style="justify-content:center;margin-top:30px"><a class="btn btn-gold" href="#join">Reserve your membership</a><a class="btn btn-ghost" href="estate-planning.html">Start with an estate plan</a></div>
+    <h2>Be one of those people who has an attorney on retainer.</h2>
+    <div class="btn-row" style="justify-content:center;margin-top:30px"><a class="btn btn-gold" href="#join">Request membership</a><a class="btn btn-ghost" href="estate-planning.html">Start with an estate plan</a></div>
   </div>
 </section>
 
@@ -474,7 +454,7 @@ document.addEventListener('DOMContentLoaded',function(){
   var t=document.querySelector('.navtoggle'),n=document.querySelector('.navlinks');
   if(t&&n){t.addEventListener('click',function(){n.classList.toggle('open');t.setAttribute('aria-expanded',n.classList.contains('open'))});}
   // forms: no backend yet — B12/Zoho Forms endpoint goes in data-endpoint
-  var forms=document.querySelectorAll('form.form');
+  var forms=document.querySelectorAll('form.form:not([data-live])');
   for(var f=0;f<forms.length;f++){forms[f].addEventListener('submit',function(e){
     e.preventDefault();var form=e.target;var email=form.querySelector('input[type=email]');
     if(email&&(!email.value||email.value.indexOf('@')<0)){email.focus();email.style.borderColor='#A31621';return;}
@@ -494,6 +474,32 @@ document.addEventListener('DOMContentLoaded',function(){
     var em=document.getElementById('nf-email');if(em){setTimeout(function(){em.focus()},600);}
   });}
 });
+</script>
+<script>
+(function(){
+  var tb=document.querySelectorAll('[data-tier]');
+  for(var i=0;i<tb.length;i++){tb[i].addEventListener('click',function(e){
+    var v=e.currentTarget.getAttribute('data-tier'),bx=document.querySelectorAll('#join-form input[name=tier]');
+    for(var j=0;j<bx.length;j++)bx[j].checked=(bx[j].value===v);
+  });}
+  var form=document.getElementById('join-form');if(!form||!form.hasAttribute('data-live'))return;
+  var btn=form.querySelector('button[type=submit]'),err=form.querySelector('.cf-err'),label=btn.textContent;
+  var mark=function(el,bad){el.setAttribute('aria-invalid',bad?'true':'false');el.style.borderColor=bad?'#A31621':'';};
+  form.addEventListener('submit',function(e){
+    e.preventDefault();err.hidden=true;
+    var email=form.querySelector('input[type=email]'),phone=form.querySelector('input[name=phone]');
+    var eb=!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim()),pv=phone.value.trim(),pb=pv&&(!/^[0-9+().\-\s]{7,40}$/.test(pv)||pv.replace(/\D/g,'').length<7);
+    mark(email,eb);mark(phone,pb);if(eb){email.focus();return;}if(pb){phone.focus();return;}
+    var data={email:email.value.trim(),phone:pv,company:form.querySelector('[name=company]').value,tier:[],veteran:false,source_page:location.pathname};
+    var boxes=form.querySelectorAll('input[type=checkbox]:checked');
+    for(var i=0;i<boxes.length;i++){if(boxes[i].name==='tier')data.tier.push(boxes[i].value);if(boxes[i].name==='veteran')data.veteran=true;}
+    btn.disabled=true;btn.textContent='Sending…';
+    fetch('/api/membership-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(j){if(!j||!j.ok)throw new Error('bad');form.classList.add('sent');})
+      .catch(function(){err.hidden=false;btn.disabled=false;btn.textContent=label;});
+  });
+})();
 </script>
 </body>
 </html>
