@@ -1,13 +1,12 @@
 # Booking pipeline release flow (see pipeline/README.md).
-#   push to mvp-preview touching pipeline/**  -> test, build, deploy to STAGING, tag staged-<sha>
+#   any push to mvp-preview                   -> test, build, deploy to STAGING, tag staged-<sha>
 #   Actions > booking-pipeline > Run workflow  -> promote an already-staged <sha> to an IDLE prod slot
 # Going live / rolling back is NOT done here: it is the one-line active_slot comment (migration 005).
 name: booking-pipeline
 
 on:
   push:
-    branches: [mvp-preview]
-    paths: ["pipeline/**", ".github/workflows/booking-pipeline.yml"]
+    branches: [mvp-preview]      # every commit is staged; site and pipeline ship together
   workflow_dispatch:
     inputs:
       sha:
