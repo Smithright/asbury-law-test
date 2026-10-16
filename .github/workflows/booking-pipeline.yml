@@ -1,16 +1,16 @@
 # Booking pipeline release flow (see pipeline/README.md).
-#   any push to mvp-preview                   -> test, build, deploy to STAGING, tag staged-<sha>
-#   Actions > booking-pipeline > Run workflow  -> promote an already-staged <sha> to an IDLE prod slot
+#   any push to mvp-preview                   -> test, build, deploy to TESTING, tag tested-<sha>
+#   Actions > booking-pipeline > Run workflow  -> promote an already-tested <sha> to an IDLE prod slot
 # Going live / rolling back is NOT done here: it is the one-line active_slot comment (migration 005).
 name: booking-pipeline
 
 on:
   push:
-    branches: [mvp-preview]      # every commit is staged; site and pipeline ship together
+    branches: [mvp-preview]      # every commit goes to testing; site and pipeline ship together
   workflow_dispatch:
     inputs:
       sha:
-        description: "Full commit SHA that already passed staging (tag staged-<sha> must exist)"
+        description: "Full commit SHA that already passed testing (tag tested-<sha> must exist)"
         required: true
       slot:
         description: "Prod slot to deploy into (must be the standby slot)"
@@ -26,10 +26,10 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  staging:
+  testing:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
-    environment: staging
+    environment: testing
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,20 +37,20 @@ jobs:
           node-version: 20
       - name: Unit tests
         run: node --test pipeline/test/*.test.mjs
-      - name: Build staging
-        run: node pipeline/build.mjs staging
-      - name: Deploy to staging (clasp push as smithright@)
+      - name: Build testing
+        run: node pipeline/build.mjs testing
+      - name: Deploy to testing (clasp push as smithright@)
         env:
-          CLASPRC: ${{ secrets.CLASPRC_STAGING }}
+          CLASPRC: ${{ secrets.CLASPRC_TESTING }}
         run: |
-          test -n "$CLASPRC" || { echo "::error::secret CLASPRC_STAGING is not set"; exit 1; }
+          test -n "$CLASPRC" || { echo "::error::secret CLASPRC_TESTING is not set"; exit 1; }
           umask 077 && printf '%s' "$CLASPRC" > ~/.clasprc.json
-          cd pipeline/dist/staging && npx --yes @google/clasp@2.4.2 push --force
+          cd pipeline/dist/testing && npx --yes @google/clasp@2.4.2 push --force
           rm -f ~/.clasprc.json
-      - name: Mark commit as staged
+      - name: Mark commit as tested
         run: |
-          git tag "staged-${GITHUB_SHA}"
-          git push origin "staged-${GITHUB_SHA}"
+          git tag "tested-${GITHUB_SHA}"
+          git push origin "tested-${GITHUB_SHA}"
 
   promote:
     if: github.event_name == 'workflow_dispatch'
@@ -67,8 +67,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.sha }}
-      - name: Require that this exact commit passed staging
-        run: git ls-remote --exit-code --tags origin "refs/tags/staged-${SHA}" >/dev/null || { echo "::error::${SHA} was never deployed to staging"; exit 1; }
+      - name: Require that this exact commit passed testing
+        run: |
+          git ls-remote --exit-code --tags origin "refs/tags/tested-${SHA}" >/dev/null ||
+          git ls-remote --exit-code --tags origin "refs/tags/staged-${SHA}" >/dev/null ||   # tag name before 2026-10-16
+          { echo "::error::${SHA} was never deployed to testing"; exit 1; }
       - uses: actions/setup-node@v4
         with:
           node-version: 20

@@ -5,9 +5,9 @@
 --   comment on schema public is 'env:production';
 --   comment on table booking_requests is 'active_slot=prod-blue';
 
--- staging branch:
---   comment on schema public is 'env:staging';
---   comment on table booking_requests is 'active_slot=staging';
+-- testing branch (named staging until 2026-10-16; see 006):
+--   comment on schema public is 'env:testing';
+--   comment on table booking_requests is 'active_slot=testing';
 
 -- Cutover / rollback (production branch only; takes effect on the next run, <= 10 min):
 --   comment on table booking_requests is 'active_slot=prod-green';   -- or prod-blue

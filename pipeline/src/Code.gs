@@ -2,7 +2,7 @@
  * Booking pipeline: Google appointment bookings -> buffers/holds on the booking calendar,
  * mirror into Neon booking_requests, one email per new booking to notification_recipients.
  *
- * ONE source for every slot (staging, prod-blue, prod-green). Never edit a deployed copy:
+ * ONE source for every slot (testing, prod-blue, prod-green). Never edit a deployed copy:
  * per-slot identity lives in pipeline/env/<slot>.json and is compiled into Config.gs (const ENV).
  *
  * Fail-closed guards, checked on every run before anything is written:

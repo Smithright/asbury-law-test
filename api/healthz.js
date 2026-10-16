@@ -6,7 +6,7 @@ const { attachDatabasePool } = require("@vercel/functions");
 const pool = new Pool({ connectionString: process.env.APP_DATABASE_URL || process.env.DATABASE_URL, max: 2 });
 attachDatabasePool(pool);
 
-const EXPECTED_ENV = process.env.VERCEL_ENV === "production" ? "env:production" : "env:staging";
+const EXPECTED_ENV = process.env.VERCEL_ENV === "production" ? "env:production" : "env:testing";
 const REF = process.env.VERCEL_GIT_COMMIT_REF || "";
 const SLOT = REF.startsWith("release-") ? REF.slice("release-".length) : REF || "unknown";
 

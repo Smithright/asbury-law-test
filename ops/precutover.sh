@@ -3,7 +3,7 @@
 # asbury-law.com keeps serving the old site; mail records are imported unchanged (MX stays on Titan).
 #
 # Run on your Mac from the repo root:  bash ops/precutover.sh <phase>
-#   phase 1  Vercel: database settings per environment, public slots, slot + staging domains, first blue deploy
+#   phase 1  Vercel: database settings per environment, public slots, slot + test domains, first blue deploy
 #   phase 2  Cloudflare: add the zone (DNS-only copy of today's records), print nameservers to set at Bluehost
 #   phase 3  after nameservers switched: slot DNS records, health monitor, pools, load balancer on next.asbury-law.com
 #   phase 4  checks: health of each slot through its own host and through the load balancer
@@ -58,7 +58,7 @@ phase1() {
   neon_url production | set_env asbury-law-blue  APP_DATABASE_URL production
   neon_url production | set_env asbury-law-green APP_DATABASE_URL production
   neon_url production | set_env asbury-law-test  APP_DATABASE_URL production
-  neon_url staging    | set_env asbury-law-test  APP_DATABASE_URL preview
+  neon_url testing    | set_env asbury-law-test  APP_DATABASE_URL preview
 
   echo "1b. Slots must be public for the load balancer (turn off Vercel Authentication)"
   for p in asbury-law-blue asbury-law-green; do vapi PATCH "/v9/projects/$p" '{"ssoProtection":null}' >/dev/null; echo "  $p: public"; done
@@ -66,7 +66,7 @@ phase1() {
   echo "1c. Domains (DNS records come in phase 3; Vercel shows them as 'invalid configuration' until then)"
   vapi POST /v10/projects/asbury-law-blue/domains  '{"name":"blue.asbury-law.com"}'  >/dev/null || echo "  (blue domain may already exist)"
   vapi POST /v10/projects/asbury-law-green/domains '{"name":"green.asbury-law.com"}' >/dev/null || echo "  (green domain may already exist)"
-  vapi POST /v10/projects/asbury-law-test/domains  '{"name":"staging.asbury-law.com","gitBranch":"mvp-preview"}' >/dev/null || echo "  (staging domain may already exist)"
+  vapi POST /v10/projects/asbury-law-test/domains  '{"name":"test.asbury-law.com","gitBranch":"mvp-preview"}' >/dev/null || echo "  (test domain may already exist)"
   echo "  domains requested"
 
   echo "1d. Deploy each slot from its release branch (production target)"
@@ -113,8 +113,8 @@ phase3() {
   ZID=$(cfapi GET "/zones?name=$DOMAIN" | jq -r '.[0].id')
   [[ $(cfapi GET "/zones/$ZID" | jq -r .status) == active ]] || { echo "zone not active yet; wait for the nameserver switch"; exit 1; }
 
-  echo "3a. Slot + staging hosts -> Vercel (DNS-only so Vercel can issue their certificates)"
-  for h in blue green staging; do
+  echo "3a. Slot + test hosts -> Vercel (DNS-only so Vercel can issue their certificates)"
+  for h in blue green test; do
     ex=$(cfapi GET "/zones/$ZID/dns_records?name=$h.$DOMAIN" | jq -r '.[0].id // empty')
     body=$(jq -nc --arg n "$h" '{type:"CNAME",name:$n,content:"cname.vercel-dns.com",proxied:false,ttl:1}')
     if [[ -n $ex ]]; then cfapi PUT "/zones/$ZID/dns_records/$ex" "$body" >/dev/null; else cfapi POST "/zones/$ZID/dns_records" "$body" >/dev/null; fi
@@ -141,10 +141,10 @@ phase3() {
 }
 
 phase4() {
-  for u in "https://blue.$DOMAIN/api/healthz" "https://green.$DOMAIN/api/healthz" "https://$LB_HOST/api/healthz" "https://staging.$DOMAIN/api/healthz"; do
+  for u in "https://blue.$DOMAIN/api/healthz" "https://green.$DOMAIN/api/healthz" "https://$LB_HOST/api/healthz" "https://test.$DOMAIN/api/healthz"; do
     printf '%-48s ' "$u"; curl -sS -m 10 -w '  HTTP %{http_code}\n' "$u" || echo "  unreachable"
   done
-  echo "Expect: blue/green/next -> {\"ok\":true,...} 200 (next shows slot=blue). staging -> 200 with slot=mvp-preview."
+  echo "Expect: blue/green/next -> {\"ok\":true,...} 200 (next shows slot=blue). test -> 200 with slot=mvp-preview."
 }
 
 case "${1:-}" in 1) phase1;; 2) phase2;; 3) phase3;; 4) phase4;; *) sed -n '2,20p' "$0";; esac

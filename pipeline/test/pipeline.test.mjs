@@ -53,6 +53,6 @@ test("isActive_: active slot acts, standby slot does nothing", () => {
 });
 
 test("isActive_: a secret pointing at the wrong branch fails closed", () => {
-  assert.throws(() => load(PROD, [{ env: "env:staging", slot: "active_slot=prod-blue" }]).isActive_("c"), /refusing to run/);
+  assert.throws(() => load(PROD, [{ env: "env:testing", slot: "active_slot=prod-blue" }]).isActive_("c"), /refusing to run/);
   assert.throws(() => load(PROD, [{ env: null, slot: null }]).isActive_("c"), /refusing to run/);
 });

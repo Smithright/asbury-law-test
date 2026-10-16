@@ -7,8 +7,8 @@ const pool = new Pool({ connectionString: process.env.APP_DATABASE_URL || proces
 attachDatabasePool(pool);
 
 // Fail closed: the database must declare the environment this deployment belongs to
-// (migration 005). Production deployments write only to env:production, everything else only to env:staging.
-const EXPECTED_ENV = process.env.VERCEL_ENV === "production" ? "env:production" : "env:staging";
+// (migration 005). Production deployments write only to env:production, everything else only to env:testing.
+const EXPECTED_ENV = process.env.VERCEL_ENV === "production" ? "env:production" : "env:testing";
 let envVerified = false;
 async function assertEnv() {
   if (envVerified) return;

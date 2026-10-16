@@ -6,7 +6,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = dirname(fileURLToPath(import.meta.url));
-const SLOTS = { staging: "staging", "prod-blue": "production", "prod-green": "production" };
+const SLOTS = { testing: "testing", "prod-blue": "production", "prod-green": "production" };
 const sha = process.env.GITHUB_SHA || execSync("git rev-parse HEAD", { cwd: root }).toString().trim();
 const wanted = process.argv.slice(2).length ? process.argv.slice(2) : readdirSync(join(root, "env")).map((f) => f.replace(/\.json$/, ""));
 
@@ -16,7 +16,7 @@ for (const slot of wanted) {
   if (SLOTS[slot] !== env.env) throw new Error(`${slot}: env must be ${SLOTS[slot]}, got ${env.env}`);
   // Every slot is symmetric: the script runs as the booking page's owner, on that owner's primary calendar.
   if (env.calendarId !== null) throw new Error(`${slot}: calendarId must be null (owner's primary calendar)`);
-  if (env.env === "production" && /staging/.test(env.secret)) throw new Error(`${slot}: production cannot use a staging secret`);
+  if (env.env === "production" && /testing|staging/.test(env.secret)) throw new Error(`${slot}: production cannot use a testing secret`);
   const out = join(root, "dist", slot);
   rmSync(out, { recursive: true, force: true });
   mkdirSync(out, { recursive: true });
