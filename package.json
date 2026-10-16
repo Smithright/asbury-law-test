@@ -1,7 +1,7 @@
 {
   "name": "asbury-law-site",
   "private": true,
-  "description": "Asbury Law static site plus the /api/contact function (Vercel).",
+  "description": "Asbury Law static site plus the /api/contact and /api/veterans functions (Vercel).",
   "engines": { "node": ">=20" },
   "dependencies": {
     "@vercel/functions": "3.9.8",

@@ -206,6 +206,8 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 .form .ok{display:none;background:rgba(201,168,76,.15);border:1px solid rgba(155,127,46,.4);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
 .form.sent .ok{display:block}
 .form.sent .btn{display:none}
+.cf-err{background:rgba(163,22,33,.08);border:1px solid rgba(163,22,33,.35);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
+.cf-err[hidden]{display:none}
 .consent{font-size:12px;color:var(--mt);margin-top:12px;line-height:1.6}
 
 /* PHOTO SLOTS */
@@ -369,7 +371,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
       <p class="lead">Upload a DD-214, VA identification card, or military ID at checkout, or send it to us here and we'll attach the veteran discount to your account before you buy anything. Your free advance directives start with a short intake and finish with the same online signing ceremony as every plan.</p>
       <p class="small" style="color:rgba(240,235,226,.55);margin-top:18px">Proof of service is handled as confidential client information and is never shared. Verification may be performed through a secure identity-verification provider.</p>
     </div>
-    <form class="form" id="vet-form" data-endpoint="" novalidate>
+    <form class="form" id="vet-form" data-live="veterans" action="/api/veterans" method="post" novalidate>
       <h3>Start your free advance directives</h3>
       <p>Leave your email and we'll send the veteran intake link and attach your 10% discount.</p>
       <label for="vet-email">Your email</label><input type="email" id="vet-email" name="email" placeholder="you@example.com" autocomplete="email" required>
@@ -378,10 +380,11 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
       <div class="checks"><label><input type="checkbox" name="branch" value="Army"> Army</label><label><input type="checkbox" name="branch" value="Navy"> Navy</label><label><input type="checkbox" name="branch" value="Marine Corps"> Marine Corps</label><label><input type="checkbox" name="branch" value="Air Force"> Air Force</label><label><input type="checkbox" name="branch" value="Space Force"> Space Force</label><label><input type="checkbox" name="branch" value="Coast Guard"> Coast Guard</label><label><input type="checkbox" name="branch" value="National Guard / Reserve"> National Guard / Reserve</label></div>
       <label>I'd like</label>
       <div class="checks"><label><input type="checkbox" name="wants" value="Free advance directives" checked> My free advance directives</label><label><input type="checkbox" name="wants" value="Estate plan"> Information on a full estate plan</label><label><input type="checkbox" name="wants" value="Membership"> Attorney on Retainer membership</label><label><input type="checkbox" name="wants" value="Newsletter"> The veterans' newsletter</label></div>
-      <input type="hidden" name="context" value="veterans-page">
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label for="vet-company">Company</label><input id="vet-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
       <button class="btn btn-gold" type="submit">Send my veteran intake link</button>
       <p class="consent">By submitting you agree to receive email from Asbury Law about the items you selected. Consent is not a condition of any purchase. Submitting this form does not create an attorney-client relationship; one is formed when you sign the engagement agreement for your directives.</p>
       <div class="ok" role="status">Thank you for your service. Your intake link is on its way.</div>
+      <div class="cf-err" role="alert" hidden>Your request could not be sent. Please try again in a few minutes, or <a href="about.html#book">book a free call</a> instead.</div>
     </form>
   </div>
 </section>
@@ -407,7 +410,7 @@ document.addEventListener('DOMContentLoaded',function(){
   var t=document.querySelector('.navtoggle'),n=document.querySelector('.navlinks');
   if(t&&n){t.addEventListener('click',function(){n.classList.toggle('open');t.setAttribute('aria-expanded',n.classList.contains('open'))});}
   // forms: no backend yet — B12/Zoho Forms endpoint goes in data-endpoint
-  var forms=document.querySelectorAll('form.form');
+  var forms=document.querySelectorAll('form.form:not([data-live])');
   for(var f=0;f<forms.length;f++){forms[f].addEventListener('submit',function(e){
     e.preventDefault();var form=e.target;var email=form.querySelector('input[type=email]');
     if(email&&(!email.value||email.value.indexOf('@')<0)){email.focus();email.style.borderColor='#A31621';return;}
@@ -427,6 +430,26 @@ document.addEventListener('DOMContentLoaded',function(){
     var em=document.getElementById('nf-email');if(em){setTimeout(function(){em.focus()},600);}
   });}
 });
+</script>
+<script>
+(function(){
+  var form=document.getElementById('vet-form');if(!form)return;
+  var btn=form.querySelector('button[type=submit]'),err=form.querySelector('.cf-err'),label=btn.textContent;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();err.hidden=true;
+    var email=form.querySelector('input[type=email]');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){email.setAttribute('aria-invalid','true');email.style.borderColor='#A31621';email.focus();return;}
+    email.setAttribute('aria-invalid','false');email.style.borderColor='';
+    var data={email:email.value.trim(),name:form.querySelector('[name=name]').value,company:form.querySelector('[name=company]').value,branch:[],wants:[],source_page:location.pathname};
+    var boxes=form.querySelectorAll('input[type=checkbox]:checked');
+    for(var i=0;i<boxes.length;i++){if(data[boxes[i].name])data[boxes[i].name].push(boxes[i].value);}
+    btn.disabled=true;btn.textContent='Sending…';
+    fetch('/api/veterans',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(j){if(!j||!j.ok)throw new Error('bad');form.classList.add('sent');})
+      .catch(function(){err.hidden=false;btn.disabled=false;btn.textContent=label;});
+  });
+})();
 </script>
 </body>
 </html>
