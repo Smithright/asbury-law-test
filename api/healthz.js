@@ -3,7 +3,7 @@
 const { Pool } = require("pg");
 const { attachDatabasePool } = require("@vercel/functions");
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 2 });
+const pool = new Pool({ connectionString: process.env.APP_DATABASE_URL || process.env.DATABASE_URL, max: 2 });
 attachDatabasePool(pool);
 
 const EXPECTED_ENV = process.env.VERCEL_ENV === "production" ? "env:production" : "env:staging";
@@ -14,7 +14,7 @@ module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
   const body = { slot: SLOT, build: (process.env.VERCEL_GIT_COMMIT_SHA || "").slice(0, 12) };
   try {
-    if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL not configured");
+    if (!(process.env.APP_DATABASE_URL || process.env.DATABASE_URL)) throw new Error("DATABASE_URL not configured");
     const { rows } = await pool.query("select obj_description('public'::regnamespace) as env");
     const env = rows[0] && rows[0].env;
     if (env !== EXPECTED_ENV) throw new Error(`wrong database: ${env}`);

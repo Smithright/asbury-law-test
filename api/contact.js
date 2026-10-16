@@ -1,9 +1,9 @@
 // POST /api/contact -> inserts one row into contact_submissions (Neon Postgres).
-// DATABASE_URL (pooled) is injected by the Neon <-> Vercel integration; it never lives in the repo.
+// APP_DATABASE_URL (pooled), set per Vercel environment by ops/precutover.sh; falls back to the Neon integration DATABASE_URL. Never in the repo.
 const { Pool } = require("pg");
 const { attachDatabasePool } = require("@vercel/functions");
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5 });
+const pool = new Pool({ connectionString: process.env.APP_DATABASE_URL || process.env.DATABASE_URL, max: 5 });
 attachDatabasePool(pool);
 
 // Fail closed: the database must declare the environment this deployment belongs to
@@ -84,7 +84,7 @@ module.exports = async function handler(req, res) {
   const { d, errors } = validate(body);
   if (errors.length) return res.status(400).json({ ok: false, error: "invalid", fields: errors });
 
-  if (!process.env.DATABASE_URL) {
+  if (!(process.env.APP_DATABASE_URL || process.env.DATABASE_URL)) {
     console.error("contact: DATABASE_URL is not configured");
     return res.status(503).json({ ok: false, error: "unavailable" });
   }
