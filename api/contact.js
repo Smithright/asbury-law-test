@@ -6,6 +6,18 @@ const { attachDatabasePool } = require("@vercel/functions");
 const pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 5 });
 attachDatabasePool(pool);
 
+// Fail closed: the database must declare the environment this deployment belongs to
+// (migration 005). Production deployments write only to env:production, everything else only to env:staging.
+const EXPECTED_ENV = process.env.VERCEL_ENV === "production" ? "env:production" : "env:staging";
+let envVerified = false;
+async function assertEnv() {
+  if (envVerified) return;
+  const { rows } = await pool.query("select obj_description('public'::regnamespace) as env");
+  const got = rows[0] && rows[0].env;
+  if (got !== EXPECTED_ENV) throw new Error(`wrong database for this deployment: ${got}, expected ${EXPECTED_ENV}`);
+  envVerified = true;
+}
+
 const TOPICS = new Set([
   "Estate planning",
   "Attorney on Retainer membership",
@@ -70,6 +82,13 @@ module.exports = async function handler(req, res) {
 
   if (!process.env.DATABASE_URL) {
     console.error("contact: DATABASE_URL is not configured");
+    return res.status(503).json({ ok: false, error: "unavailable" });
+  }
+
+  try {
+    await assertEnv();
+  } catch (e) {
+    console.error("contact:", e && e.message);
     return res.status(503).json({ ok: false, error: "unavailable" });
   }
 

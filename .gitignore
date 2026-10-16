@@ -6,3 +6,6 @@ Thumbs.db
 .vercel/
 node_modules/
 *.log
+
+pipeline/dist/
+assets/site-env.js

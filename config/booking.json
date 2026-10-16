@@ -1,0 +1,5 @@
+{
+  "_comment": "Single source for which Google booking page each Vercel environment embeds. Read by scripts/build-site-env.mjs at deploy time.",
+  "production": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3mEav_X3SCAYBHdwDpjaHpyogGypH1Wesj7Ci7-EJu5NSxJCUSsu_M0inN0zRrHn0a7I2XnHjx",
+  "preview": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ2Wf7Vh6g6tlluaCPro8_hi0_ebNnZ1AiVYhzHACTmEOW42FEbIsVM9Yu_xFuD08li3ZuIBeqCd"
+}

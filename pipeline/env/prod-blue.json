@@ -1,0 +1,8 @@
+{
+  "slot": "prod-blue",
+  "env": "production",
+  "account": "tom@asbury-law.com",
+  "scriptId": "16Q16l67l2XatXBfIbEjR9XdEzlKoU-2BT852T__r7VBT0QPc87fd9MQJ",
+  "calendarId": null,
+  "secret": "neon-booking-sync"
+}

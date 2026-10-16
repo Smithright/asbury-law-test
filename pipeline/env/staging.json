@@ -1,0 +1,8 @@
+{
+  "slot": "staging",
+  "env": "staging",
+  "account": "smithright@asbury-law.com",
+  "scriptId": "11yXNviDfVs4RGlltDZk5eK8ecAZ-xozGFVNLxf056DsxVAZWOmL9Kqwt",
+  "calendarId": null,
+  "secret": "neon-booking-sync-staging"
+}

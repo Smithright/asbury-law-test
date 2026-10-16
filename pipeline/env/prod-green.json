@@ -1,0 +1,8 @@
+{
+  "slot": "prod-green",
+  "env": "production",
+  "account": "tom@asbury-law.com",
+  "scriptId": "TBD-created-in-toms-apps-script",
+  "calendarId": null,
+  "secret": "neon-booking-sync"
+}

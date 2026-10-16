@@ -1,0 +1,94 @@
+# Booking pipeline release flow (see pipeline/README.md).
+#   push to mvp-preview touching pipeline/**  -> test, build, deploy to STAGING, tag staged-<sha>
+#   Actions > booking-pipeline > Run workflow  -> promote an already-staged <sha> to an IDLE prod slot
+# Going live / rolling back is NOT done here: it is the one-line active_slot comment (migration 005).
+name: booking-pipeline
+
+on:
+  push:
+    branches: [mvp-preview]
+    paths: ["pipeline/**", ".github/workflows/booking-pipeline.yml"]
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: "Full commit SHA that already passed staging (tag staged-<sha> must exist)"
+        required: true
+      slot:
+        description: "Prod slot to deploy into (must be the standby slot)"
+        type: choice
+        options: [prod-green, prod-blue]
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: booking-pipeline
+  cancel-in-progress: false
+
+jobs:
+  staging:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Unit tests
+        run: node --test pipeline/test/*.test.mjs
+      - name: Build staging
+        run: node pipeline/build.mjs staging
+      - name: Deploy to staging (clasp push as smithright@)
+        env:
+          CLASPRC: ${{ secrets.CLASPRC_STAGING }}
+        run: |
+          test -n "$CLASPRC" || { echo "::error::secret CLASPRC_STAGING is not set"; exit 1; }
+          umask 077 && printf '%s' "$CLASPRC" > ~/.clasprc.json
+          cd pipeline/dist/staging && npx --yes @google/clasp@2.4.2 push --force
+          rm -f ~/.clasprc.json
+      - name: Mark commit as staged
+        run: |
+          git tag "staged-${GITHUB_SHA}"
+          git push origin "staged-${GITHUB_SHA}"
+
+  promote:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      SHA: ${{ inputs.sha }}
+      SLOT: ${{ inputs.slot }}
+    steps:
+      - name: Validate input
+        run: |
+          [[ "$SHA" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::sha must be a full 40-char commit SHA"; exit 1; }
+          [[ "$SLOT" == prod-blue || "$SLOT" == prod-green ]] || { echo "::error::bad slot"; exit 1; }
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.sha }}
+      - name: Require that this exact commit passed staging
+        run: git ls-remote --exit-code --tags origin "refs/tags/staged-${SHA}" >/dev/null || { echo "::error::${SHA} was never deployed to staging"; exit 1; }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Unit tests
+        run: node --test pipeline/test/*.test.mjs
+      - name: Build slot
+        run: |
+          node pipeline/build.mjs "$SLOT"
+          if grep -q '"scriptId": "TBD' "pipeline/dist/$SLOT/.clasp.json"; then echo "::error::$SLOT has no scriptId yet"; exit 1; fi
+      - name: Deploy (clasp push as tom@)
+        env:
+          CLASPRC: ${{ secrets.CLASPRC_PROD }}
+        run: |
+          test -n "$CLASPRC" || { echo "::error::secret CLASPRC_PROD is not set"; exit 1; }
+          umask 077 && printf '%s' "$CLASPRC" > ~/.clasprc.json
+          cd "pipeline/dist/$SLOT" && npx --yes @google/clasp@2.4.2 push --force
+          rm -f ~/.clasprc.json
+      - name: Record promotion
+        run: |
+          git tag "promoted-${SLOT}-${SHA}"
+          git push origin "promoted-${SLOT}-${SHA}"
+          echo "Deployed ${SHA} to ${SLOT} (standby until active_slot is flipped)." >> "$GITHUB_STEP_SUMMARY"
