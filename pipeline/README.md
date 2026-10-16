@@ -17,6 +17,17 @@ Google booking page → buffers/holds on the owner's calendar → mirror into Ne
 1. `obj_description('public'::regnamespace)` must be `env:<ENV.env>`, else the run throws. A secret pointing at the wrong branch writes nothing. `api/contact.js` applies the same check (production deployments ↔ `env:production`, all others ↔ `env:staging`).
 2. `obj_description('booking_requests'::regclass)` must be `active_slot=<ENV.slot>`, else the run does nothing (standby).
 
+## Website slots (Cloudflare load balancer in front)
+| Host | Vercel project | Git branch it builds | Role |
+|---|---|---|---|
+| `blue.asbury-law.com` | `asbury-law-blue` | `release-blue` (production branch) | live or standby |
+| `green.asbury-law.com` | `asbury-law-green` | `release-green` (production branch) | live or standby |
+| `staging.asbury-law.com` | `asbury-law-test` (preview of `mvp-preview`) | `mvp-preview` | testing |
+| `next.asbury-law.com` → later `asbury-law.com` | Cloudflare load balancer | — | routes to the healthy slot, fails over automatically, emails on change |
+
+Health check: `GET /api/healthz` returns 200 only when the database answers and declares the expected environment.
+Promote moves `release-<color>` to the staged commit together with the Apps Script slot, so a slot's site and booking code always come from the same commit.
+
 ## Release flow
 1. Change `pipeline/**`, push to `mvp-preview` → CI runs unit tests, builds and `clasp push`es **staging**, then tags `staged-<sha>`.
 2. Book a test call on the staging page (config/booking.json `.preview`); confirm the row in staging `booking_requests` and the email.

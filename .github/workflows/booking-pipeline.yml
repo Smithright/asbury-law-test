@@ -87,6 +87,18 @@ jobs:
           umask 077 && printf '%s' "$CLASPRC" > ~/.clasprc.json
           cd "pipeline/dist/$SLOT" && npx --yes @google/clasp@2.4.2 push --force
           rm -f ~/.clasprc.json
+      - name: Deploy the slot's website (move release-<color> to this commit; Vercel builds it)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          COLOR="${SLOT#prod-}"
+          REF="repos/${GITHUB_REPOSITORY}/git/refs/heads/release-${COLOR}"
+          if gh api "$REF" >/dev/null 2>&1; then
+            gh api -X PATCH "$REF" -f sha="$SHA" -F force=true >/dev/null
+          else
+            gh api -X POST "repos/${GITHUB_REPOSITORY}/git/refs" -f ref="refs/heads/release-${COLOR}" -f sha="$SHA" >/dev/null
+          fi
+          echo "release-${COLOR} -> ${SHA}" >> "$GITHUB_STEP_SUMMARY"
       - name: Record promotion
         run: |
           git tag "promoted-${SLOT}-${SHA}"

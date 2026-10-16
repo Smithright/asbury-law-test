@@ -1,0 +1,11 @@
+{
+  "_comment": "Hostnames allowed to call /api/* from the browser (contact form). Every slot and the router hostnames must be listed.",
+  "allowed": [
+    "asbury-law.com",
+    "www.asbury-law.com",
+    "next.asbury-law.com",
+    "blue.asbury-law.com",
+    "green.asbury-law.com",
+    "staging.asbury-law.com"
+  ]
+}

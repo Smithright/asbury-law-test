@@ -33,11 +33,15 @@ function str(v, max) {
   return v.trim().slice(0, max);
 }
 
+// Behind the load balancer the Host header is the slot (blue./green.) while Origin is asbury-law.com,
+// so accept any origin on the committed allowlist, plus same-host (Vercel preview URLs).
+const ALLOWED_HOSTS = new Set(require("../config/hosts.json").allowed);
 function sameOrigin(req) {
   const origin = req.headers.origin;
   if (!origin) return true; // non-browser clients; still validated below
   try {
-    return new URL(origin).host === req.headers.host;
+    const host = new URL(origin).host;
+    return host === req.headers.host || ALLOWED_HOSTS.has(host);
   } catch {
     return false;
   }
