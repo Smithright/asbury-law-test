@@ -1,0 +1,21 @@
+{
+  "_comment": "Single source for the Estate Planning request form: read by estate-planning.html (to render the add-ons for the chosen plan) and by api/plan-request.js (to validate). Keep in step with the plan cards.",
+  "plans": [
+    { "key": "foundations", "name": "Foundations", "price": "$495", "addons": [
+      { "key": "spouse", "label": "Add a spouse or partner (mirror-image plan)", "price": "+$295" },
+      { "key": "lady-bird", "label": "Lady Bird deed to keep your home out of probate", "price": "+$249" },
+      { "key": "living-updates", "label": "Living Plan Updates", "price": "+$149" }
+    ]},
+    { "key": "cornerstone", "name": "Cornerstone", "price": "$1,795", "addons": [
+      { "key": "joint-trust", "label": "Joint trust for married couples", "price": "+$400" },
+      { "key": "extra-deed", "label": "Additional Florida property deed", "price": "+$249 each" },
+      { "key": "living-updates", "label": "Living Plan Updates", "price": "+$249" }
+    ]},
+    { "key": "pinnacle", "name": "Pinnacle", "price": "$2,995", "addons": [
+      { "key": "irrevocable", "label": "Irrevocable trust (asset protection or Medicaid planning)", "price": "Quoted" },
+      { "key": "snt", "label": "Standalone Special Needs Trust", "price": "+$750" },
+      { "key": "extra-deed", "label": "Additional Florida property deed", "price": "+$249 each" },
+      { "key": "fortress", "label": "Fortress Circle membership for year-round counsel", "price": "$349/mo" }
+    ]}
+  ]
+}

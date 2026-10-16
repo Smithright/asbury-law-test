@@ -206,6 +206,10 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
 .form .ok{display:none;background:rgba(201,168,76,.15);border:1px solid rgba(155,127,46,.4);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
 .form.sent .ok{display:block}
 .form.sent .btn{display:none}
+.pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.pr-full{grid-column:1/-1}
+@media(max-width:640px){.pr-grid{grid-template-columns:1fr}}
+.cf-err{background:rgba(163,22,33,.08);border:1px solid rgba(163,22,33,.35);border-radius:4px;padding:14px 16px;margin-top:16px;font-size:14px;color:var(--ink)}
+.cf-err[hidden],[hidden]{display:none}
 .consent{font-size:12px;color:var(--mt);margin-top:12px;line-height:1.6}
 
 /* PHOTO SLOTS */
@@ -386,7 +390,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
           <li>Living Plan Updates — every future revision of your documents at no charge <span>+$149</span></li>
           <li>Upgrade to Cornerstone at any time — your $495 is credited in full</li>
         </ul>
-        <a href="#start" class="btn btn-ghost">Select Foundations</a>
+        <a href="#plan-request" class="btn btn-ghost" data-plan="foundations">Select Foundations</a>
         <div class="fine">Personally drafted; typical delivery within 10 business days of a completed intake.</div>
       </div>
 
@@ -413,7 +417,7 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
           <li>Living Plan Updates — every future revision at no charge <span>+$249</span></li>
           <li>Upgrade to Pinnacle — your $1,795 is credited in full</li>
         </ul>
-        <a href="#start" class="btn btn-gold">Select Cornerstone</a>
+        <a href="#plan-request" class="btn btn-gold" data-plan="cornerstone">Select Cornerstone</a>
         <div class="fine">Personally drafted; typical delivery within 15 business days of a completed intake.</div>
       </div>
 
@@ -439,10 +443,34 @@ details p{margin-top:12px;color:rgba(42,37,32,.78);max-width:760px}
           <li>Additional Florida property deed <span>+$249 each</span></li>
           <li>Fortress Circle membership for year-round counsel <span>$349/mo</span></li>
         </ul>
-        <a href="#start" class="btn btn-ghost">Select Pinnacle</a>
+        <a href="#plan-request" class="btn btn-ghost" data-plan="pinnacle">Select Pinnacle</a>
         <div class="fine">Personally drafted; typical delivery within 21 business days of a completed intake.</div>
       </div>
     </div>
+
+    <form class="form" id="plan-request" data-live="plan" action="/api/plan-request" method="post" novalidate style="margin-top:40px">
+      <h3 id="pr-title">Start your plan</h3>
+      <p id="pr-sub">Pick a plan above or here. We run a conflict check first, then email your engagement agreement with the flat fee in writing. Nothing is charged until you sign.</p>
+      <div class="pr-grid">
+        <div class="pr-full"><label for="pr-plan">Plan</label><select id="pr-plan" name="plan" required>
+          <option value="">Choose a plan</option>
+          <option value="foundations">Foundations · $495 flat</option>
+          <option value="cornerstone">Cornerstone · $1,795 flat</option>
+          <option value="pinnacle">Pinnacle · $2,995 flat</option>
+        </select></div>
+        <div><label for="pr-first">First name</label><input type="text" id="pr-first" name="first_name" autocomplete="given-name" required></div>
+        <div><label for="pr-last">Last name</label><input type="text" id="pr-last" name="last_name" autocomplete="family-name" required></div>
+        <div><label for="pr-email">Email</label><input type="email" id="pr-email" name="email" autocomplete="email" required></div>
+        <div><label for="pr-phone">Phone (optional)</label><input type="text" id="pr-phone" name="phone" autocomplete="tel"></div>
+      </div>
+      <div id="pr-addons-wrap" hidden><label>Add-ons for this plan (optional)</label><div class="checks" id="pr-addons"></div></div>
+      <label for="pr-msg">Anything we should know (optional)</label><textarea id="pr-msg" name="message" placeholder="A sentence or two is plenty. Please don't include confidential details."></textarea>
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden"><label for="pr-company">Company</label><input id="pr-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="checks" style="grid-template-columns:1fr;margin-top:18px"><label><input type="checkbox" name="consent" value="yes" required> I understand that requesting a plan does not create an attorney-client relationship; one is formed only when I sign the engagement agreement.</label></div>
+      <button class="btn btn-gold" type="submit" id="pr-btn">Request my engagement agreement</button>
+      <div class="ok" role="status">Thank you. Thomas Asbury will run a conflict check and email your engagement agreement.</div>
+      <div class="cf-err" role="alert" hidden>Your request could not be sent. Please try again in a few minutes, or <a href="about.html#book">book a free call</a> instead.</div>
+    </form>
 
     <div id="session" style="margin-top:40px;background:var(--cr2);border:1px solid var(--bl);border-radius:6px;padding:28px 30px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
       <div><div style="font-family:var(--sf);font-size:24px;font-weight:600">Not sure which plan fits?</div><p class="small" style="color:var(--mt);max-width:620px;margin-top:4px">Book a 30-minute planning session with Thomas Asbury.</p></div>
@@ -573,7 +601,7 @@ document.addEventListener('DOMContentLoaded',function(){
   var t=document.querySelector('.navtoggle'),n=document.querySelector('.navlinks');
   if(t&&n){t.addEventListener('click',function(){n.classList.toggle('open');t.setAttribute('aria-expanded',n.classList.contains('open'))});}
   // forms: no backend yet — B12/Zoho Forms endpoint goes in data-endpoint
-  var forms=document.querySelectorAll('form.form');
+  var forms=document.querySelectorAll('form.form:not([data-live])');
   for(var f=0;f<forms.length;f++){forms[f].addEventListener('submit',function(e){
     e.preventDefault();var form=e.target;var email=form.querySelector('input[type=email]');
     if(email&&(!email.value||email.value.indexOf('@')<0)){email.focus();email.style.borderColor='#A31621';return;}
@@ -593,6 +621,46 @@ document.addEventListener('DOMContentLoaded',function(){
     var em=document.getElementById('nf-email');if(em){setTimeout(function(){em.focus()},600);}
   });}
 });
+</script>
+<script>
+(function(){
+  var form=document.getElementById('plan-request');if(!form)return;
+  var sel=form.querySelector('#pr-plan'),wrap=form.querySelector('#pr-addons-wrap'),box=form.querySelector('#pr-addons'),
+      title=form.querySelector('#pr-title'),btn=form.querySelector('#pr-btn'),err=form.querySelector('.cf-err'),plans={};
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function render(){
+    var p=plans[sel.value];
+    title.textContent=p?('Start your '+p.name+' plan · '+p.price+' flat'):'Start your plan';
+    btn.textContent=p?('Request my '+p.name+' engagement agreement'):'Request my engagement agreement';
+    if(!p||!p.addons.length){wrap.hidden=true;box.innerHTML='';return;}
+    box.innerHTML=p.addons.map(function(a){return '<label><input type="checkbox" name="addons" value="'+esc(a.key)+'"> '+esc(a.label)+' <b style="font-weight:600;white-space:nowrap">'+esc(a.price)+'</b></label>';}).join('');
+    wrap.hidden=false;
+  }
+  fetch('config/plans.json').then(function(r){return r.json();}).then(function(j){j.plans.forEach(function(p){plans[p.key]=p;});render();}).catch(function(){});
+  sel.addEventListener('change',render);
+  var picks=document.querySelectorAll('[data-plan]');
+  for(var i=0;i<picks.length;i++){picks[i].addEventListener('click',function(e){
+    e.preventDefault();sel.value=e.currentTarget.getAttribute('data-plan');render();
+    form.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){form.querySelector('#pr-first').focus({preventScroll:true});},500);
+  });}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();err.hidden=true;
+    var bad=null,req=form.querySelectorAll('[required]');
+    for(var k=0;k<req.length;k++){var el=req[k];var v=el.type==='checkbox'?el.checked:String(el.value).trim();
+      var ok=!!v&&(el.type!=='email'||/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()));
+      el.setAttribute('aria-invalid',ok?'false':'true');el.style.borderColor=ok?'':'#A31621';if(!ok&&!bad)bad=el;}
+    if(bad){bad.focus();return;}
+    var g=function(n){return form.querySelector('[name='+n+']').value;};
+    var data={plan:sel.value,first_name:g('first_name'),last_name:g('last_name'),email:g('email').trim(),phone:g('phone'),message:g('message'),company:g('company'),
+      consent:form.querySelector('[name=consent]').checked,addons:[],source_page:location.pathname};
+    var ad=form.querySelectorAll('input[name=addons]:checked');for(var m=0;m<ad.length;m++)data.addons.push(ad[m].value);
+    var label=btn.textContent;btn.disabled=true;btn.textContent='Sending…';
+    fetch('/api/plan-request',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(j){if(!j||!j.ok)throw new Error('bad');form.classList.add('sent');})
+      .catch(function(){err.hidden=false;btn.disabled=false;btn.textContent=label;});
+  });
+})();
 </script>
 </body>
 </html>
